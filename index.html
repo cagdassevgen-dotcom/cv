@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çağdaş Sevgen — Business Development & Sales Executive</title>
+<meta name="description" content="Çağdaş Sevgen, MBA — Senior Business Development & Sales executive. Tech, finance, AI-driven growth across the EEMEAR region.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ÇAĞDAŞ SEVGEN — Cinematic Executive CV
+   Tech · Finance · Future-AI · Network
+   Deep midnight-navy / azure / violet
+   ============================================================ */
+:root{
+  --bg:#0a1322;
+  --bg-2:#0f1c33;
+  --bg-3:#16243f;
+  --ink:#e9f0fb;
+  --ink-2:#dde6f3;
+  --ink-3:#aab9d3;
+  --line:rgba(130,170,225,0.15);
+  --acc:#5cc8ff;        /* azure */
+  --acc2:#9d8cff;       /* violet */
+  --acc-deep:#2f7fd0;
+  --acc-soft:rgba(92,200,255,0.14);
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --pad:clamp(20px,5vw,90px);
+  --maxw:1320px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:clamp(15px,1.05vw,18px);line-height:1.6;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden}
+::selection{background:var(--acc);color:#06101f}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:400;line-height:1.02;letter-spacing:-0.02em}
+.serif{font-family:var(--serif)}
+.grad{background:linear-gradient(105deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
+
+/* fixed cinematic canvas */
+#bg-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;pointer-events:none}
+.bg-grad{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(80% 60% at 18% 12%, rgba(47,127,208,0.16), transparent 60%),
+    radial-gradient(70% 70% at 85% 80%, rgba(157,140,255,0.12), transparent 60%),
+    linear-gradient(180deg,#0b1424,#0a1120 60%,#080f1c)}
+.bg-veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(6,11,22,0.55) 100%)}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.page{position:relative;z-index:5}
+
+/* ---------------- LOADER ---------------- */
+#loader{position:fixed;inset:0;z-index:1000;background:#080f1c;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:30px;transition:opacity 1s var(--ease),visibility 1s}
+#loader.done{opacity:0;visibility:hidden}
+.ld-mono{font-family:var(--serif);font-size:clamp(2.4rem,7vw,5rem);letter-spacing:0.04em;display:flex;gap:0.08em}
+.ld-mono span{opacity:0;transform:translateY(40px);display:inline-block;animation:ldUp .9s var(--ease) forwards}
+.ld-mono span:nth-child(2){animation-delay:.12s;color:transparent;background:linear-gradient(105deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text}
+@keyframes ldUp{to{opacity:1;transform:none}}
+.ld-line{width:min(360px,60vw);height:1px;background:var(--line);position:relative;overflow:hidden}
+.ld-line i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--acc-deep),var(--acc))}
+.ld-meta{display:flex;justify-content:space-between;width:min(360px,60vw);font-family:var(--mono);
+  font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.ld-pct{color:var(--acc)}
+
+/* ---------------- CHROME ---------------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;
+  justify-content:space-between;padding:20px var(--pad);transition:.5s var(--ease)}
+.topbar.hide{transform:translateY(-120%)}
+.brand{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em}
+.brand b{color:var(--acc);font-weight:400}
+.topnav{display:flex;gap:28px}
+.top-right{display:flex;align-items:center;gap:24px}
+.langsel{display:flex;gap:2px;border:1px solid var(--line);border-radius:100px;padding:3px}
+.lang-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--ink-2);background:transparent;border:none;cursor:pointer;padding:5px 9px;border-radius:100px;transition:.3s}
+.lang-btn:hover{color:var(--ink)}
+.lang-btn.on{background:linear-gradient(105deg,var(--acc),var(--acc2));color:#06101f}
+.topnav a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);transition:.3s}
+.topnav a:hover{color:var(--acc)}
+@media(max-width:760px){.topnav{display:none}}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:130;background:linear-gradient(90deg,var(--acc-deep),var(--acc2))}
+.dots{position:fixed;right:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:115;display:flex;flex-direction:column;gap:15px}
+.dots button{width:7px;height:7px;border-radius:50%;border:1px solid var(--ink-3);background:transparent;cursor:pointer;padding:0;transition:.35s var(--ease)}
+.dots button.active{background:var(--acc);border-color:var(--acc);box-shadow:0 0 0 4px var(--acc-soft)}
+@media(max-width:760px){.dots{display:none}}
+
+/* ---------------- KINETIC TEXT ---------------- */
+.kx{will-change:transform,opacity;transform:translate3d(var(--kx,0),var(--ky,0),0);opacity:var(--ko,1)}
+
+/* readability scrim behind text over the live canvas */
+.scrim{position:relative;isolation:isolate}
+.scrim::before{content:"";position:absolute;z-index:-1;inset:-26px -48px;border-radius:34px;pointer-events:none;
+  background:radial-gradient(ellipse 72% 86% at 50% 50%, rgba(7,12,24,0.86), rgba(7,12,24,0.55) 52%, transparent 78%)}
+.scrim h1,.scrim h2,.scrim p,.scrim blockquote,.scrim .profile-lead,.scrim .csub{text-shadow:0 1px 18px rgba(5,9,18,0.55)}
+
+/* ---------------- HERO ---------------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:0 var(--pad);overflow:hidden}
+.hero-inner{max-width:min(880px,66vw);margin:0;width:100%;position:relative;z-index:6}
+@media(max-width:860px){.hero-inner{max-width:100%}}
+.hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);
+  display:flex;align-items:center;gap:1em;margin-bottom:clamp(22px,4vh,40px)}
+.hero-eyebrow::before{content:"";width:3em;height:1px;background:var(--acc);opacity:.7}
+.hero h1{font-family:var(--serif);font-size:clamp(3.4rem,10vw,9.5rem);line-height:.94;letter-spacing:-.03em}
+.hero h1 .ln{display:block;overflow:hidden;padding-block:0.04em}
+.hero h1.revealed .ln{overflow:visible}
+.hero h1 .ln>span{display:block;transform:translateY(108%);transition:transform 1.1s var(--ease)}
+.hero.in h1 .ln>span{transform:none}
+.hero-roles{margin-top:clamp(24px,4vh,42px);display:flex;flex-wrap:wrap;gap:10px 26px}
+.hero-roles span{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);white-space:nowrap}
+.hero-roles b{color:var(--ink);font-weight:400}
+.hero-cta{margin-top:clamp(30px,5vh,52px);display:flex;gap:16px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:14px 24px;
+  border:1px solid var(--line);border-radius:100px;display:inline-flex;align-items:center;gap:10px;transition:.4s var(--ease);cursor:pointer}
+.btn .a{color:var(--acc);transition:.4s var(--ease)}
+.btn:hover{border-color:var(--acc);transform:translateY(-2px)}
+.btn:hover .a{transform:translateX(4px)}
+.btn.solid{background:linear-gradient(105deg,var(--acc),var(--acc2));color:#06101f;border-color:transparent}
+.btn.solid .a{color:#06101f}
+.scrollcue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:7;display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.scrollcue .bar{width:46px;height:1px;background:var(--ink-3);position:relative;overflow:hidden}
+.scrollcue .bar::after{content:"";position:absolute;inset:0;width:40%;background:var(--acc);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:translateX(-110%)}100%{transform:translateX(280%)}}
+
+/* ---------------- SECTION SHELL ---------------- */
+.section{position:relative;z-index:5;padding:clamp(90px,16vh,200px) 0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+/* alternating column: viz lives on opposite side via scene; text hugs a side */
+.lead-l{max-width:680px;margin-right:auto}
+.lead-r{max-width:680px;margin-left:auto;text-align:right}
+.lead-r .eyebrow{flex-direction:row-reverse}
+.lead-r .region,.lead-r .hero-roles{justify-content:flex-end}
+.shead{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(44px,8vh,90px)}
+.shead h2{font-family:var(--serif);font-size:clamp(2.1rem,5vw,4rem)}
+.shead h2 em{font-style:italic;color:var(--acc)}
+.sindex{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--ink-3)}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);display:inline-flex;align-items:center;gap:.9em}
+.eyebrow::before{content:"";width:2.4em;height:1px;background:var(--acc);opacity:.7}
+.glass{background:linear-gradient(180deg,rgba(18,30,54,.82),rgba(9,17,32,.8));border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px)}
+
+/* ---------------- PROFILE ---------------- */
+.profile-lead{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.2}
+.profile-lead em{font-style:italic;color:var(--acc)}
+.profile-body p{color:var(--ink);margin-bottom:1.1em}
+.profile-body strong{color:var(--ink);font-weight:600}
+.region{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.region span{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--ink-2);border:1px solid var(--line);padding:6px 12px;border-radius:100px;transition:.35s}
+.region span:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+/* big quote */
+.quote{position:relative;z-index:5;padding:clamp(60px,13vh,160px) 0;text-align:center}
+.quote blockquote{font-family:var(--serif);font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.18;max-width:22ch;margin:0 auto}
+.quote em{font-style:italic;color:var(--acc)}
+.quote cite{display:block;margin-top:30px;font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);font-style:normal}
+
+/* ---------------- IMPACT ---------------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{padding:clamp(26px,3.4vw,44px);border-radius:14px}
+.stat .tick{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:20px}
+.stat .num{font-family:var(--serif);font-size:clamp(3rem,6.5vw,5.4rem);line-height:1;display:flex;align-items:baseline}
+.stat .num .suf{color:var(--acc);font-size:.5em;margin-left:.06em}
+.stat .lbl{margin-top:14px;color:var(--ink);font-size:.95rem;max-width:24ch}
+@media(max-width:820px){.stats{grid-template-columns:1fr}}
+
+/* ---------------- TIMELINE ---------------- */
+.tl-grid{display:grid;grid-template-columns:.32fr .68fr;gap:clamp(24px,4vw,60px);align-items:start}
+.tl-stick{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.tl-year{font-family:var(--serif);font-style:italic;font-size:clamp(3rem,7vw,6.5rem);line-height:.85;color:var(--acc)}
+.tl-count{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase}
+.tl-prog{width:60%;height:2px;background:var(--line);position:relative}
+.tl-prog i{position:absolute;left:0;top:0;height:100%;width:0;background:var(--acc);transition:width .5s var(--ease)}
+.tl-loc{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
+.tl-list{display:flex;flex-direction:column;position:relative;isolation:isolate}
+.tl-list::before{content:"";position:absolute;z-index:-1;inset:-10px -34px;border-radius:24px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(7,12,24,0.34),rgba(7,12,24,0.66) 30%,rgba(7,12,24,0.66) 100%)}
+.tl-item{padding:clamp(28px,5vh,52px) 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:22px;opacity:.5;
+  transform:translateX(64px);transition:opacity .45s var(--ease),transform .45s var(--ease),color .3s;min-width:0}
+.tl-item:nth-child(even){transform:translateX(-64px)}
+.tl-item.seen{transform:none}
+.tl-item:first-child{padding-top:0}
+.tl-item.active{opacity:1}
+.tl-item{cursor:default;transform-origin:left center}
+.tl-item:hover{opacity:1;transform:scale(1.022)}
+.tl-item:hover .tl-co h3{color:var(--acc)}
+.tl-item:hover .tl-node{background:var(--acc);border-color:var(--acc);box-shadow:0 0 0 5px var(--acc-soft)}
+.tl-node{width:12px;height:12px;border-radius:50%;border:1px solid var(--ink-3);margin-top:8px;transition:.4s}
+.tl-item.active .tl-node{background:var(--acc);border-color:var(--acc);box-shadow:0 0 0 5px var(--acc-soft)}
+.tl-co{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;min-width:0}
+.tl-co h3{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2.1rem);white-space:nowrap}
+.tl-badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc-deep);padding:3px 9px;border-radius:100px}
+.tl-meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-2);margin:8px 0 14px;display:flex;gap:14px;flex-wrap:wrap}
+.tl-desc{color:var(--ink);font-size:.95rem;max-width:52ch}
+.tl-wins{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.tl-wins li{list-style:none;display:flex;gap:11px;color:var(--ink);font-size:.9rem}
+.tl-wins li::before{content:"→";color:var(--acc);flex:none}
+@media(max-width:820px){.tl-grid{grid-template-columns:1fr}
+  .tl-stick{position:static;height:auto;flex-direction:row;align-items:baseline;justify-content:flex-start;margin-bottom:18px}
+  .tl-year{font-size:3rem}.tl-prog,.tl-loc{display:none}}
+
+/* ---------------- SKILLS ---------------- */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.skill{padding:clamp(24px,3.2vw,42px);border-radius:14px}
+.skill h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:20px;display:flex;gap:12px;align-items:center}
+.skill h3 .n{color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chips span{font-size:.92rem;color:var(--ink);border:1px solid rgba(150,185,235,0.28);background:rgba(12,22,40,0.5);padding:8px 14px;border-radius:6px;transition:.35s}
+.chips span:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+@media(max-width:720px){.skills{grid-template-columns:1fr}}
+
+/* ---------------- CREDENTIALS ---------------- */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px)}
+@media(max-width:820px){.edu{grid-template-columns:1fr}}
+.edu-item{padding:24px 0;border-top:1px solid var(--line)}
+.edu-item:first-of-type{border-top:none;padding-top:0}
+.edu-item .yr{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--acc)}
+.edu-item h3{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);margin:8px 0 4px}
+.edu-item p{color:var(--ink-2);font-size:.92rem}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+.certs{display:flex;flex-direction:column;gap:12px}
+.cert{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:16px 18px;border-radius:10px;transition:.4s}
+.cert:hover{transform:translateX(5px)}
+.cert .inst{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.cert .name{color:var(--ink);margin-top:3px;font-size:.96rem}
+.cert .score{font-family:var(--serif);font-size:1.5rem;color:var(--acc);white-space:nowrap}
+.cert .score small{font-size:.55em;color:var(--ink-3)}
+.langs{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.lang-row{display:grid;grid-template-columns:8ch 1fr auto;align-items:center;gap:16px}
+.lang-row .meter{height:3px;background:var(--line);position:relative;overflow:hidden}
+.lang-row .meter i{position:absolute;inset:0;width:var(--w,0);background:linear-gradient(90deg,var(--acc-deep),var(--acc2));transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease)}
+.lang-row.in .meter i{transform:scaleX(1)}
+.lang-row .lvl{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---------------- CONTACT ---------------- */
+.contact h2{font-family:var(--serif);font-size:clamp(2.6rem,8vw,7rem);line-height:.94}
+.contact h2 em{font-style:italic;color:var(--acc)}
+.csub{color:var(--ink);margin:26px 0 36px;max-width:48ch}
+.clinks{display:flex;flex-direction:column;max-width:720px}
+.clink{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:22px 4px;border-top:1px solid var(--line);transition:.4s var(--ease)}
+.clink:last-child{border-bottom:1px solid var(--line)}
+.clink .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.clink .v{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.6rem)}
+.clink .arr{color:var(--acc);transition:.4s var(--ease)}
+.clink:hover{padding-left:14px}.clink:hover .v{color:var(--acc)}.clink:hover .arr{transform:translateX(6px)}
+footer{position:relative;z-index:5;padding:40px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line)}
+footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+
+@media(prefers-reduced-motion:reduce){
+  .kx{transform:none!important;opacity:1!important}
+  .hero h1 .ln>span{transform:none!important}
+}
+
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-mono"><span>Ç</span><span>S</span></div>
+  <div class="ld-line"><i></i></div>
+  <div class="ld-meta"><span>Çağdaş Sevgen</span><span class="ld-pct">000</span></div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-grad"></div>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<div class="progress"></div>
+
+<header class="topbar">
+  <a class="brand" href="#top">Çağdaş <b>Sevgen</b></a>
+  <div class="top-right">
+    <nav class="topnav">
+      <a href="#profile" data-i18n="nav.profile">Profile</a>
+      <a href="#impact" data-i18n="nav.impact">Impact</a>
+      <a href="#career" data-i18n="nav.career">Career</a>
+      <a href="#skills" data-i18n="nav.cap">Capabilities</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="langsel">
+      <button class="lang-btn" data-lang="tr">TR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+  </div>
+</header>
+
+<aside class="dots">
+  <button data-target="top" class="active"></button>
+  <button data-target="profile"></button>
+  <button data-target="impact"></button>
+  <button data-target="career"></button>
+  <button data-target="skills"></button>
+  <button data-target="credentials"></button>
+  <button data-target="contact"></button>
+</aside>
+
+<main class="page">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top" data-section data-screen-label="Hero">
+    <div class="hero-inner lead-l scrim">
+      <div class="hero-eyebrow kx" data-k="l" data-amt="60" data-i18n="h.eyebrow">Business Development &amp; Sales — EEMEAR</div>
+      <h1>
+        <span class="ln"><span>Çağdaş</span></span>
+        <span class="ln"><span class="grad">Sevgen</span></span>
+      </h1>
+      <div class="hero-roles kx" data-k="l" data-amt="70">
+        <span data-i18n="h.role1"><b>MBA</b> · Yeditepe University</span>
+        <span data-i18n="h.role2">Head of Global Business Development</span>
+        <span data-i18n="h.role3">25+ years · <b>3 continents</b></span>
+      </div>
+      <div class="hero-cta kx" data-k="l" data-amt="50">
+        <a class="btn solid" href="#contact"><span data-i18n="h.cta1">Get in touch</span> <span class="a">→</span></a>
+        <a class="btn" href="#career"><span data-i18n="h.cta2">View career</span> <span class="a">↓</span></a>
+      </div>
+    </div>
+    <div class="scrollcue"><span class="bar"></span> <span data-i18n="h.scroll">Scroll to explore</span></div>
+  </section>
+
+  <!-- ================= PROFILE ================= -->
+  <section class="section" id="profile" data-section data-screen-label="Profile">
+    <div class="wrap">
+      <div class="lead-r scrim">
+        <div class="shead kx" data-k="r" style="justify-content:flex-end;gap:18px">
+          <span class="sindex" data-i18n="p.idx">01 — Profile</span>
+          <h2 class="serif" data-i18n="p.h2">A <em>strategist</em> who builds<br>scalable growth systems.</h2>
+        </div>
+        <p class="profile-lead kx" data-k="r" data-amt="80" data-i18n="p.lead">
+          Seasoned business development &amp; sales leader with over <em>two decades</em>
+          building teams, scaling companies and expanding networks across the EEMEAR region.
+        </p>
+        <div class="profile-body kx" data-k="r" data-amt="60">
+          <p data-i18n="p.b1">I build and lead <strong>multicultural teams</strong>, set strategy and operating objectives, and run <strong>ROI &amp; budget discipline</strong> end to end — translating market opportunity into durable, compounding growth.</p>
+          <p data-i18n="p.b2">Today my focus sits where <strong>technology, finance and AI</strong> meet go-to-market: Web3, fintech and data-driven growth systems, powered by a deep partner and dealer network.</p>
+          <div class="region">
+            <span data-i18n="r.africa">Africa</span><span data-i18n="r.me">Middle East</span><span data-i18n="r.swa">South West Asia</span><span data-i18n="r.tr">Türkiye</span>
+            <span data-i18n="r.gr">Greece</span><span data-i18n="r.balk">Balkans</span><span data-i18n="r.ro">Romania</span><span data-i18n="r.bg">Bulgaria</span>
+            <span data-i18n="r.by">Belarus</span><span data-i18n="r.ua">Ukraine</span><span data-i18n="r.ru">Russia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE ================= -->
+  <section class="quote">
+    <div class="wrap scrim">
+      <blockquote class="kx" data-k="l" data-amt="70" data-i18n="q.text">“I don’t just grow companies; I <em>build scalable growth systems</em> — integrating revenue, operations and strategy to deliver sustainable results.”</blockquote>
+      <cite class="kx" data-k="r" data-amt="50" data-i18n="q.cite">— Executive Value Proposition</cite>
+    </div>
+  </section>
+
+  <!-- ================= IMPACT ================= -->
+  <section class="section" id="impact" data-section data-screen-label="Impact">
+    <div class="wrap">
+      <div class="shead kx" data-k="l">
+        <h2 class="serif" data-i18n="im.h2">Measurable <em>impact.</em></h2>
+        <span class="sindex" data-i18n="im.idx">02 — By the numbers</span>
+      </div>
+      <div class="stats">
+        <div class="stat glass kx" data-k="l" data-amt="40"><span class="tick" data-i18n="im.t1">Experience</span><div class="num"><span data-count="25">0</span><span class="suf">+</span></div><div class="lbl" data-i18n="im.l1">Years leading business development across EEMEAR</div></div>
+        <div class="stat glass kx" data-k="l" data-amt="55"><span class="tick" data-i18n="im.t2">Market entry</span><div class="num"><span data-count="5">0</span></div><div class="lbl" data-i18n="im.l2">Multinationals launched into EE, MEA &amp; Türkiye</div></div>
+        <div class="stat glass kx" data-k="l" data-amt="70"><span class="tick" data-i18n="im.t3">Growth</span><div class="num"><span data-count="70">0</span><span class="suf">%</span></div><div class="lbl" data-i18n="im.l3">Growth delivered over a five-year span</div></div>
+        <div class="stat glass kx" data-k="r" data-amt="40"><span class="tick" data-i18n="im.t4">Network</span><div class="num"><span data-count="80">0</span><span class="suf">+</span></div><div class="lbl" data-i18n="im.l4">New dealers &amp; resellers onboarded in EeMEAR</div></div>
+        <div class="stat glass kx" data-k="r" data-amt="55"><span class="tick" data-i18n="im.t5">Campaigns</span><div class="num"><span data-count="70">0</span><span class="suf">+</span></div><div class="lbl" data-i18n="im.l5">Sales &amp; marketing campaigns executed</div></div>
+        <div class="stat glass kx" data-k="r" data-amt="70"><span class="tick" data-i18n="im.t6">Web3</span><div class="num"><span data-count="40">0</span><span class="suf">+</span></div><div class="lbl" data-i18n="im.l6">Web3 projects supported with GTM &amp; token strategy</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CAREER ================= -->
+  <section class="section" id="career" data-section data-screen-label="Career">
+    <div class="wrap">
+      <div class="shead kx scrim" data-k="l">
+        <h2 class="serif" data-i18n="ca.h2">Two decades, <em>one trajectory.</em></h2>
+        <span class="sindex" data-i18n="ca.idx">03 — Career</span>
+      </div>
+      <div class="tl-grid">
+        <div class="tl-stick scrim">
+          <div class="tl-count">01 / 07</div>
+          <div class="tl-year">2022</div>
+          <div class="tl-loc">Istanbul · Global</div>
+          <div class="tl-prog"><i></i></div>
+        </div>
+        <div class="tl-list">
+
+          <article class="tl-item active" data-year="2022" data-loc="Istanbul · Global">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>BinStarter.io</h3><span class="tl-badge">Web3 · Crypto</span></div>
+              <div class="tl-meta"><span data-i18n="j1.role">Head of Global Business Development</span><span>Feb 2022 — <span data-i18n="now">Present</span></span></div>
+              <p class="tl-desc" data-i18n="j1.desc">Reporting to the CEO. Formulate demand-creation strategies and new product launches, negotiate partnerships, and run financial modeling, governance and business-intelligence frameworks aligned to corporate strategy.</p>
+              <ul class="tl-wins"><li data-i18n="j1.w1">Supported 40+ Web3 projects with go-to-market &amp; token strategies</li><li data-i18n="j1.w2">Designed scalable growth systems blending corporate &amp; startup methods</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2016" data-loc="Istanbul · EeMEAR">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>CsVg Consultancy</h3><span class="tl-badge">Founder</span></div>
+              <div class="tl-meta"><span data-i18n="j2.role">Senior Manager / Owner</span><span>Feb 2016 — <span data-i18n="now">Present</span></span></div>
+              <p class="tl-desc" data-i18n="j2.desc">In-depth research, surveys and computer-modeled validation of business strategy; client reporting, training programmes, stakeholder engagement and ROI-disciplined business planning.</p>
+              <ul class="tl-wins"><li data-i18n="j2.w1">Introduced 80+ new dealers across the EeMEAR region</li><li data-i18n="j2.w2">Executed 70+ sales &amp; marketing campaigns exceeding targets</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2013" data-loc="Africa · ME · EE">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>Onyx Graphics Inc.</h3><span class="tl-badge">EEMEAR</span></div>
+              <div class="tl-meta"><span data-i18n="j3.role">Territory Sales Manager</span><span>Jul 2013 — Feb 2016</span></div>
+              <p class="tl-desc" data-i18n="j3.desc">Owned daily operations across Africa, the Middle East, South West Asia, Türkiye, Greece, the Balkans and Eastern Europe — market &amp; competition analysis, dealer development and consultative sales.</p>
+              <ul class="tl-wins"><li data-i18n="j3.w1">Completed 4 complex projects, boosting regional sales &amp; share</li><li data-i18n="j3.w2">Increased regional growth by 10%+ through process optimisation</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2009" data-loc="Italy · EEMEAR">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>Epson Italy</h3><span class="tl-badge">Pro-graphics</span></div>
+              <div class="tl-meta"><span data-i18n="j4.role">Prographics Channels &amp; VI Manager</span><span>Jan 2009 — Jul 2013</span></div>
+              <p class="tl-desc" data-i18n="j4.desc">Built short, mid and long-term channel strategy, managed dealer &amp; distributor alignment, designed integrated marketing campaigns, sponsorships and exhibitions, and oversaw product launches, pricing and roadmaps.</p>
+              <ul class="tl-wins"><li data-i18n="j4.w1">Grew market share in Türkiye &amp; the EEMEAR region</li><li data-i18n="j4.w2">Executed integrated campaigns lifting revenue &amp; brand visibility</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2007" data-loc="Türkiye · Retail">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>Apple IMC Türkiye</h3><span class="tl-badge">Retail</span></div>
+              <div class="tl-meta"><span data-i18n="j5.role">Retail Channel Manager</span><span>Aug 2007 — Jan 2009</span></div>
+              <p class="tl-desc" data-i18n="j5.desc">Managed retail accounts and stock control, opened new accounts and deepened existing relationships, trained customer representatives and ran product announcements and sales events.</p>
+              <ul class="tl-wins"><li data-i18n="j5.w1">Exceeded sales targets and lifted retail channel effectiveness</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2006" data-loc="Türkiye · Adobe">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>Bilkom</h3><span class="tl-badge">Adobe</span></div>
+              <div class="tl-meta"><span data-i18n="j6.role">Adobe Product Manager</span><span>Apr 2006 — Aug 2007</span></div>
+              <p class="tl-desc" data-i18n="j6.desc">Crafted product launches, press releases and training seminars, supervised sales teams and inventory, and engaged end-users directly to sustain high product satisfaction.</p>
+              <ul class="tl-wins"><li data-i18n="j6.w1">Led the Adobe Creative Suite 3 launch (600 participants)</li><li data-i18n="j6.w2">Managed Adobe Acrobat 8 launch (400 participants)</li></ul>
+            </div>
+          </article>
+
+          <article class="tl-item" data-year="2000" data-loc="Türkiye · Sales">
+            <span class="tl-node"></span>
+            <div>
+              <div class="tl-co"><h3>Bilişim Bilgisayar</h3><span class="tl-badge">Sales</span></div>
+              <div class="tl-meta"><span data-i18n="j7.role">Sales Manager</span><span>Feb 2000 — Mar 2005</span></div>
+              <p class="tl-desc" data-i18n="j7.desc">Managed orders, sales control and stock optimisation, analysed sectoral trends and demand, developed new sales channels and ran proactive customer relationship management.</p>
+              <ul class="tl-wins"><li data-i18n="j7.w1">Built sustainable sales &amp; satisfaction; strengthened channels</li></ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="section" id="skills" data-section data-screen-label="Skills">
+    <div class="wrap">
+      <div class="lead-r scrim">
+        <div class="shead kx" data-k="r" style="justify-content:flex-end;gap:18px">
+          <span class="sindex" data-i18n="sk.idx">04 — Capabilities</span>
+          <h2 class="serif" data-i18n="sk.h2">Core <em>competencies.</em></h2>
+        </div>
+      </div>
+      <div class="skills">
+        <div class="skill glass kx" data-k="l" data-amt="45"><h3><span class="n">01</span> <span data-i18n="sk.g1">Leadership &amp; Strategy</span></h3><div class="chips"><span>Global Operations</span><span>KPI &amp; P&amp;L</span><span>Strategic Planning</span><span>Process Optimisation</span><span>Team Building</span><span>Mentorship</span></div></div>
+        <div class="skill glass kx" data-k="r" data-amt="45"><h3><span class="n">02</span> <span data-i18n="sk.g2">Growth &amp; Sales</span></h3><div class="chips"><span>B2B &amp; B2C Sales</span><span>GTM Strategy</span><span>Market Expansion</span><span>Business Development</span><span>Sales Team Setup</span><span>Networking</span></div></div>
+        <div class="skill glass kx" data-k="l" data-amt="45"><h3><span class="n">03</span> <span data-i18n="sk.g3">Technology &amp; Future</span></h3><div class="chips"><span>Web3</span><span>Blockchain</span><span>Tokenomics</span><span>SaaS</span><span>Fintech</span><span>AI Integration</span><span>Salesforce CRM</span></div></div>
+        <div class="skill glass kx" data-k="r" data-amt="45"><h3><span class="n">04</span> <span data-i18n="sk.g4">Marketing &amp; Communication</span></h3><div class="chips"><span>Campaign Design</span><span>Brand Awareness</span><span>Product Launch</span><span>Event Management</span><span>Press &amp; Media</span><span>Negotiation</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CREDENTIALS ================= -->
+  <section class="section" id="credentials" data-section data-screen-label="Credentials">
+    <div class="wrap">
+      <div class="shead kx scrim" data-k="l">
+        <h2 class="serif" data-i18n="cr.h2">Education &amp; <em>credentials.</em></h2>
+        <span class="sindex" data-i18n="cr.idx">05 — Foundation</span>
+      </div>
+      <div class="edu">
+        <div class="kx scrim" data-k="l" data-amt="55">
+          <div class="edu-item"><div class="yr">2006 — 2009</div><h3 data-i18n="cr.mba">Master of Business Administration</h3><p data-i18n="cr.uni">Yeditepe University, Istanbul</p></div>
+          <div class="edu-item"><div class="yr">1999 — 2004</div><h3 data-i18n="cr.bsc">BSc, Political Science &amp; International Relations</h3><p data-i18n="cr.uni">Yeditepe University, Istanbul</p></div>
+          <h3 class="label" style="margin:42px 0 18px" data-i18n="cr.langs">Languages</h3>
+          <div class="langs">
+            <div class="lang-row"><span class="l" data-i18n="ln.tr">Turkish</span><span class="meter"><i style="--w:100%"></i></span><span class="lvl" data-i18n="lv.native">Native</span></div>
+            <div class="lang-row"><span class="l" data-i18n="ln.en">English</span><span class="meter"><i style="--w:94%"></i></span><span class="lvl" data-i18n="lv.exc">Excellent</span></div>
+            <div class="lang-row"><span class="l" data-i18n="ln.az">Azeri</span><span class="meter"><i style="--w:75%"></i></span><span class="lvl" data-i18n="lv.prof">Proficient</span></div>
+            <div class="lang-row"><span class="l" data-i18n="ln.de">German</span><span class="meter"><i style="--w:30%"></i></span><span class="lvl" data-i18n="lv.beg">Beginner</span></div>
+          </div>
+        </div>
+        <div class="kx scrim" data-k="r" data-amt="55">
+          <h3 class="label" style="margin-bottom:18px" data-i18n="cr.certs">Certifications</h3>
+          <div class="certs">
+            <div class="cert glass"><div><div class="inst">Stanford University</div><div class="name" data-i18n="c.organ">Organizational Analysis</div></div><div class="score">92<small>/100</small></div></div>
+            <div class="cert glass"><div><div class="inst">Yale University</div><div class="name" data-i18n="c.fin">Financial Markets — Honors</div></div><div class="score">★</div></div>
+            <div class="cert glass"><div><div class="inst">Yale University</div><div class="name" data-i18n="c.neg">Strategic &amp; Persuasive Negotiation</div></div><div class="score">98<small>/100</small></div></div>
+            <div class="cert glass"><div><div class="inst">Copenhagen Business School</div><div class="name" data-i18n="c.org">Strategic Management &amp; Innovation</div></div><div class="score">97<small>/100</small></div></div>
+            <div class="cert glass"><div><div class="inst">Copenhagen Business School</div><div class="name" data-i18n="c.lead">Leadership in 21st Century Organizations</div></div><div class="score">100<small>/100</small></div></div>
+            <div class="cert glass"><div><div class="inst">Vision Europe</div><div class="name" data-i18n="c.syn">Synergic Sales Management</div></div><div class="score">✦</div></div>
+          </div>
+          <p style="margin-top:22px;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--ink-3)" data-i18n="cr.assoc">Founding member — Erenköy Rotaract &amp; BNI Action</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section" id="contact" data-section data-screen-label="Contact">
+    <div class="wrap lead-l scrim">
+      <span class="eyebrow kx" data-k="l" data-amt="50" data-i18n="co.idx">06 — Let’s talk</span>
+      <h2 class="contact serif kx" data-k="l" data-amt="70" style="margin-top:24px" data-i18n="co.h2">Let’s build the<br><em>next chapter.</em></h2>
+      <p class="csub kx" data-k="l" data-amt="55" data-i18n="co.sub">Open to senior business development &amp; sales leadership roles across the EEMEAR region and beyond. Based in Istanbul, Türkiye.</p>
+      <div class="clinks kx" data-k="l" data-amt="45">
+        <a class="clink" href="mailto:cagdassevgen@gmail.com"><span class="k" data-i18n="co.email">Email</span><span class="v">cagdassevgen@gmail.com</span><span class="arr">→</span></a>
+        <a class="clink" href="https://www.linkedin.com/in/cagdassevgen/" target="_blank" rel="noopener"><span class="k" data-i18n="co.li">LinkedIn</span><span class="v">/in/cagdassevgen</span><span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f" data-i18n="ft.left">Çağdaş Sevgen — Business Development &amp; Sales</span>
+    <span class="f">Istanbul · © <span id="cur-year">2026</span></span>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   Cinematic morphing particle field — Three.js
+   Shapes shift with scroll to mirror the section in view:
+   network → orbit → finance/growth → career helix → AI brain
+   → lattice → converge. Tech · finance · future-AI · network.
+   API: window.CVScene.setState(index, side) / progress(p)
+   ============================================================ */
+(function () {
+  if (!window.THREE) { console.warn('THREE missing'); return; }
+  const canvas = document.getElementById('bg-canvas');
+  let W = innerWidth, H = innerHeight;
+
+  const isMobile = W < 768 || /Mobi|Android/i.test(navigator.userAgent);
+  // Remove preserveDrawingBuffer (was disabling GPU double-buffering); lower antialias/dpr on mobile
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1 : 1.5));
+  renderer.setSize(W, H);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
+  camera.position.set(0, 0, 4.2);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const CYAN = new THREE.Color('#5cc8ff');
+  const VIOLET = new THREE.Color('#9d8cff');
+  // Adaptive particle count: fewer on mobile to stay within frame budget
+  const N = isMobile ? 1400 : 2600;
+
+  /* ---- soft round sprite ---- */
+  function dot() {
+    const c = document.createElement('canvas'); c.width = c.height = 32;
+    const g = c.getContext('2d');
+    const grd = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grd.addColorStop(0, 'rgba(255,255,255,1)');
+    grd.addColorStop(0.3, 'rgba(255,255,255,0.85)');
+    grd.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = grd; g.fillRect(0, 0, 32, 32);
+    return new THREE.CanvasTexture(c);
+  }
+  const DOT = dot();
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
+
+  /* ================= TARGET SHAPES ================= */
+  function mk(fn) { const a = new Float32Array(N * 3); for (let i = 0; i < N; i++) fn(i, a, i * 3); return a; }
+
+  // 0 NETWORK — clustered node cloud
+  const sNetwork = mk((i, a, o) => {
+    const dir = new THREE.Vector3(gauss(), gauss(), gauss()).normalize();
+    const r = 0.55 + Math.pow(Math.random(), 0.6) * 0.95;
+    a[o] = dir.x * r; a[o+1] = dir.y * r * 0.92; a[o+2] = dir.z * r;
+  });
+
+  // 1 ORBIT — concentric tilted rings (global reach)
+  const ringR = [0.55, 0.85, 1.15, 1.45, 1.75];
+  const sOrbit = mk((i, a, o) => {
+    const r = ringR[i % ringR.length] + gauss() * 0.04;
+    const ang = Math.random() * Math.PI * 2;
+    const tilt = (i % ringR.length) * 0.22 - 0.4;
+    let x = Math.cos(ang) * r, z = Math.sin(ang) * r, y = gauss() * 0.03;
+    // tilt around x
+    const yy = y * Math.cos(tilt) - z * Math.sin(tilt);
+    const zz = y * Math.sin(tilt) + z * Math.cos(tilt);
+    a[o] = x; a[o+1] = yy; a[o+2] = zz;
+  });
+
+  // 2 FINANCE — rolling grid surface (data landscape / growth)
+  const side = Math.round(Math.sqrt(N));
+  const sFinance = mk((i, a, o) => {
+    const gx = i % side, gz = Math.floor(i / side);
+    const x = (gx / (side - 1) - 0.5) * 3.2;
+    const z = (gz / (side - 1) - 0.5) * 3.2;
+    const y = Math.sin(x * 2.2) * 0.28 + Math.cos(z * 1.8) * 0.22 + (x * 0.12); // tilt up to the right = growth
+    a[o] = x; a[o+1] = y; a[o+2] = z;
+  });
+
+  // 3 HELIX — double helix (career trajectory)
+  const sHelix = mk((i, a, o) => {
+    const t = (i / N) * Math.PI * 2 * 5;
+    const strand = i % 2 ? Math.PI : 0;
+    const y = (i / N - 0.5) * 3.0;
+    const r = 0.62;
+    a[o] = Math.cos(t + strand) * r;
+    a[o+1] = y;
+    a[o+2] = Math.sin(t + strand) * r;
+  });
+
+  // 4 BRAIN — two neural lobes (AI)
+  const sBrain = mk((i, a, o) => {
+    const lobe = i % 2 ? 1 : -1;
+    const dir = new THREE.Vector3(gauss(), gauss(), gauss()).normalize();
+    const r = 0.35 + Math.pow(Math.random(), 0.7) * 0.5;
+    a[o] = lobe * 0.5 + dir.x * r * 0.8;
+    a[o+1] = dir.y * r * 1.05;
+    a[o+2] = dir.z * r * 0.9;
+  });
+
+  // 5 LATTICE — fibonacci sphere shell (structured foundation)
+  const sLattice = mk((i, a, o) => {
+    const off = 2 / N, inc = Math.PI * (3 - Math.sqrt(5));
+    const y = i * off - 1 + off / 2;
+    const rr = Math.sqrt(1 - y * y), ph = i * inc;
+    a[o] = Math.cos(ph) * rr * 1.25; a[o+1] = y * 1.25; a[o+2] = Math.sin(ph) * rr * 1.25;
+  });
+
+  // 6 CONVERGE — bright torus ring
+  const sRing = mk((i, a, o) => {
+    const ang = (i / N) * Math.PI * 2 * 3;
+    const r = 1.0 + gauss() * 0.05;
+    a[o] = Math.cos(ang) * r; a[o+1] = Math.sin(ang) * r * 0.42 + gauss() * 0.05; a[o+2] = gauss() * 0.08;
+  });
+
+  const STATES = [sNetwork, sOrbit, sFinance, sHelix, sBrain, sLattice, sRing];
+  // which states show connective edges strongly
+  const EDGE_WEIGHT = [1.0, 0.15, 0.1, 0.2, 0.95, 0.3, 0.2];
+
+  /* ---- live positions + colours ---- */
+  const cur = new Float32Array(N * 3);
+  cur.set(sNetwork);
+  const colors = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    const c = CYAN.clone().lerp(VIOLET, Math.random());
+    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(cur, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const pMat = new THREE.PointsMaterial({
+    size: 0.05, map: DOT, vertexColors: true, transparent: true, opacity: 0.8,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+  });
+  const points = new THREE.Points(geo, pMat);
+  group.add(points);
+
+  /* ---- connective edges (subset) ---- */
+  const M = 200, EPAIRS = [];
+  for (let k = 0; k < 160; k++) {
+    const a = Math.floor(Math.random() * M);
+    const b = Math.min(M - 1, a + 1 + Math.floor(Math.random() * 6));
+    EPAIRS.push(a, b);
+  }
+  const edgePos = new Float32Array(EPAIRS.length * 3);
+  const edgeGeo = new THREE.BufferGeometry();
+  edgeGeo.setAttribute('position', new THREE.BufferAttribute(edgePos, 3));
+  const edgeMat = new THREE.LineBasicMaterial({ color: CYAN, transparent: true, opacity: 0.0,
+    blending: THREE.AdditiveBlending, depthWrite: false });
+  const edges = new THREE.LineSegments(edgeGeo, edgeMat);
+  group.add(edges);
+
+  /* ---- nebula glow ---- */
+  function neb(color, x, y, s, op) {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: DOT, color, transparent: true,
+      blending: THREE.AdditiveBlending, depthWrite: false, opacity: op }));
+    sp.scale.set(s, s, s); sp.position.set(x, y, -1.5); scene.add(sp); return sp;
+  }
+  const neb1 = neb(CYAN, -1.2, 0.6, 5.5, 0.22);
+  const neb2 = neb(VIOLET, 1.3, -0.6, 6, 0.18);
+
+  /* ---- state / interaction ---- */
+  let active = 0, edgeW = 1.0;
+  let tViz = 1, vizOp = 1;            // per-section brightness multiplier
+  let tMouseX = 0, tMouseY = 0, mouseX = 0, mouseY = 0;
+  let scrollP = 0, tScrollP = 0;
+  let tSide = 0.9, sideX = 0.9;       // viz horizontal placement
+  addEventListener('mousemove', e => { tMouseX = e.clientX / W - 0.5; tMouseY = e.clientY / H - 0.5; });
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clock = new THREE.Clock();
+
+  // Pause rendering when tab is not visible; reset clock to avoid dt spike on resume
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) clock.getDelta(); });
+
+  function resize() { W = innerWidth; H = innerHeight; camera.aspect = W / H; camera.updateProjectionMatrix(); renderer.setSize(W, H); }
+  addEventListener('resize', resize);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if (document.hidden) return;
+    const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+    mouseX += (tMouseX - mouseX) * 0.05; mouseY += (tMouseY - mouseY) * 0.05;
+    scrollP += (tScrollP - scrollP) * 0.06; sideX += (tSide - sideX) * 0.06;
+
+    // morph toward active target
+    const tgt = STATES[active], k = reduced ? 1 : 0.055;
+    for (let i = 0; i < N * 3; i++) cur[i] += (tgt[i] - cur[i]) * k;
+    geo.attributes.position.needsUpdate = true;
+
+    // edges follow current particle positions
+    for (let e = 0; e < EPAIRS.length; e++) {
+      const pi = EPAIRS[e] * 3, oo = e * 3;
+      edgePos[oo] = cur[pi]; edgePos[oo+1] = cur[pi+1]; edgePos[oo+2] = cur[pi+2];
+    }
+    edgeGeo.attributes.position.needsUpdate = true;
+    edgeW += (EDGE_WEIGHT[active] - edgeW) * 0.05;
+    vizOp += (tViz - vizOp) * 0.06;
+    pMat.opacity = 0.8 * vizOp;
+    edgeMat.opacity = edgeW * 0.32 * vizOp;
+    neb1.material.opacity = 0.22 * vizOp; neb2.material.opacity = 0.18 * vizOp;
+
+    group.rotation.y += dt * (reduced ? 0 : 0.06);
+    group.rotation.y += (mouseX * 0.5 - (group.rotation.y % (Math.PI*2)) * 0) * 0; // keep additive spin
+    group.rotation.x = mouseY * 0.3 - scrollP * 0.15;
+    group.position.x = sideX + mouseX * 0.25;
+    group.position.y = -scrollP * 0.15;
+    camera.position.z = 4.2 - scrollP * 0.25;
+
+    neb1.position.x = -1.2 + Math.sin(t * 0.2) * 0.3;
+    neb2.position.y = -0.6 + Math.cos(t * 0.18) * 0.3;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.CVScene = {
+    setState(i, side, dim) {
+      if (i != null && i >= 0 && i < STATES.length) active = i;
+      if (side != null) tSide = side;   // -1.0 (left) .. +1.0 (right)
+      if (dim != null) tViz = dim;      // 0..1 brightness
+    },
+    progress(p) { tScrollP = p; },
+    ready: true
+  };
+})();
+
+</script>
+<script>
+/* ============================================================
+   i18n — Türkçe / English / Deutsch
+   Keys map to [data-i18n] elements; values may contain HTML.
+   ============================================================ */
+(function () {
+  const D = {
+    /* nav */
+    'nav.profile':   { tr:'Profil',        en:'Profile',       de:'Profil' },
+    'nav.impact':    { tr:'Etki',          en:'Impact',        de:'Wirkung' },
+    'nav.career':    { tr:'Kariyer',       en:'Career',        de:'Werdegang' },
+    'nav.cap':       { tr:'Yetkinlikler',  en:'Capabilities',  de:'Kompetenzen' },
+    'nav.contact':   { tr:'İletişim',      en:'Contact',       de:'Kontakt' },
+    /* hero */
+    'h.eyebrow':{ tr:'İş Geliştirme & Satış — EEMEAR', en:'Business Development & Sales — EEMEAR', de:'Business Development & Vertrieb — EEMEAR' },
+    'h.role1':  { tr:'<b>MBA</b> · Yeditepe Üniversitesi', en:'<b>MBA</b> · Yeditepe University', de:'<b>MBA</b> · Yeditepe Universität' },
+    'h.role2':  { tr:'Global İş Geliştirme Direktörü', en:'Head of Global Business Development', de:'Leiter Globale Geschäftsentwicklung' },
+    'h.role3':  { tr:'25+ yıl · <b>3 kıta</b>', en:'25+ years · <b>3 continents</b>', de:'25+ Jahre · <b>3 Kontinente</b>' },
+    'h.cta1':   { tr:'İletişime geç', en:'Get in touch', de:'Kontakt aufnehmen' },
+    'h.cta2':   { tr:'Kariyeri gör', en:'View career', de:'Werdegang ansehen' },
+    'h.scroll': { tr:'Keşfetmek için kaydır', en:'Scroll to explore', de:'Zum Entdecken scrollen' },
+    /* profile */
+    'p.idx':  { tr:'01 — Profil', en:'01 — Profile', de:'01 — Profil' },
+    'p.h2':   { tr:'<em>Ölçeklenebilir</em> büyüme<br>sistemleri kuran bir stratejist.', en:'A <em>strategist</em> who builds<br>scalable growth systems.', de:'Ein <em>Stratege</em>, der skalierbare<br>Wachstumssysteme aufbaut.' },
+    'p.lead': { tr:'<em>Yirmi yılı aşkın</em> deneyimiyle EEMEAR bölgesinde ekipler kuran, şirketleri büyüten ve güçlü ağlar geliştiren kıdemli bir iş geliştirme & satış lideri.', en:'Seasoned business development & sales leader with over <em>two decades</em> building teams, scaling companies and expanding networks across the EEMEAR region.', de:'Erfahrener Business-Development- & Vertriebsleiter mit über <em>zwei Jahrzehnten</em> Erfahrung im Aufbau von Teams, der Skalierung von Unternehmen und dem Ausbau von Netzwerken in der EEMEAR-Region.' },
+    'p.b1':   { tr:'<strong>Çok kültürlü ekipler</strong> kurar ve yönetirim; strateji ile operasyonel hedefleri belirler, uçtan uca <strong>ROI & bütçe disiplini</strong> yürütürüm — pazar fırsatını kalıcı, bileşik büyümeye çeviririm.', en:'I build and lead <strong>multicultural teams</strong>, set strategy and operating objectives, and run <strong>ROI & budget discipline</strong> end to end — translating market opportunity into durable, compounding growth.', de:'Ich baue und führe <strong>multikulturelle Teams</strong>, definiere Strategie und operative Ziele und steuere <strong>ROI- & Budgetdisziplin</strong> durchgängig — und verwandle Marktchancen in nachhaltiges, kumulatives Wachstum.' },
+    'p.b2':   { tr:'Bugün odağım <strong>teknoloji, finans ve yapay zeka</strong> ile pazara açılmanın kesiştiği noktada: Web3, fintech ve veriye dayalı büyüme sistemleri — köklü bir iş ortağı ve bayi ağıyla güçlendirilmiş.', en:'Today my focus sits where <strong>technology, finance and AI</strong> meet go-to-market: Web3, fintech and data-driven growth systems, powered by a deep partner and dealer network.', de:'Heute liegt mein Fokus dort, wo <strong>Technologie, Finanzen und KI</strong> auf die Markteinführung treffen: Web3, Fintech und datengetriebene Wachstumssysteme, gestützt auf ein starkes Partner- und Händlernetzwerk.' },
+    /* regions */
+    'r.africa':{tr:'Afrika',en:'Africa',de:'Afrika'},
+    'r.me':{tr:'Orta Doğu',en:'Middle East',de:'Naher Osten'},
+    'r.swa':{tr:'Güneybatı Asya',en:'South West Asia',de:'Südwestasien'},
+    'r.tr':{tr:'Türkiye',en:'Türkiye',de:'Türkei'},
+    'r.gr':{tr:'Yunanistan',en:'Greece',de:'Griechenland'},
+    'r.balk':{tr:'Balkanlar',en:'Balkans',de:'Balkan'},
+    'r.ro':{tr:'Romanya',en:'Romania',de:'Rumänien'},
+    'r.bg':{tr:'Bulgaristan',en:'Bulgaria',de:'Bulgarien'},
+    'r.by':{tr:'Belarus',en:'Belarus',de:'Belarus'},
+    'r.ua':{tr:'Ukrayna',en:'Ukraine',de:'Ukraine'},
+    'r.ru':{tr:'Rusya',en:'Russia',de:'Russland'},
+    /* quote */
+    'q.text':{ tr:'“Sadece şirketleri büyütmüyorum; <em>ölçeklenebilir büyüme sistemleri</em> kuruyorum — geliri, operasyonu ve stratejiyi birleştirerek kalıcı sonuçlar üretiyorum.”', en:'“I don’t just grow companies; I <em>build scalable growth systems</em> — integrating revenue, operations and strategy to deliver sustainable results.”', de:'„Ich lasse Unternehmen nicht nur wachsen; ich <em>baue skalierbare Wachstumssysteme</em> — und verbinde Umsatz, Betrieb und Strategie für nachhaltige Ergebnisse.“' },
+    'q.cite':{ tr:'— Yönetici Değer Önermesi', en:'— Executive Value Proposition', de:'— Führungs-Wertversprechen' },
+    /* impact */
+    'im.idx':{tr:'02 — Rakamlarla',en:'02 — By the numbers',de:'02 — In Zahlen'},
+    'im.h2':{tr:'Ölçülebilir <em>etki.</em>',en:'Measurable <em>impact.</em>',de:'Messbare <em>Wirkung.</em>'},
+    'im.t1':{tr:'Deneyim',en:'Experience',de:'Erfahrung'},
+    'im.l1':{tr:'EEMEAR genelinde iş geliştirme liderliği yılı',en:'Years leading business development across EEMEAR',de:'Jahre Leitung der Geschäftsentwicklung in EEMEAR'},
+    'im.t2':{tr:'Pazara giriş',en:'Market entry',de:'Markteintritt'},
+    'im.l2':{tr:'EE, MEA & Türkiye’ye taşınan çok uluslu şirket',en:'Multinationals launched into EE, MEA & Türkiye',de:'Multinationale Unternehmen in EE, MEA & Türkei eingeführt'},
+    'im.t3':{tr:'Büyüme',en:'Growth',de:'Wachstum'},
+    'im.l3':{tr:'Beş yıllık sürede sağlanan büyüme',en:'Growth delivered over a five-year span',de:'Wachstum über einen Zeitraum von fünf Jahren'},
+    'im.t4':{tr:'Ağ',en:'Network',de:'Netzwerk'},
+    'im.l4':{tr:'EeMEAR’da kazandırılan yeni bayi & satıcı',en:'New dealers & resellers onboarded in EeMEAR',de:'Neue Händler & Wiederverkäufer in EeMEAR gewonnen'},
+    'im.t5':{tr:'Kampanya',en:'Campaigns',de:'Kampagnen'},
+    'im.l5':{tr:'Yürütülen satış & pazarlama kampanyası',en:'Sales & marketing campaigns executed',de:'Durchgeführte Vertriebs- & Marketingkampagnen'},
+    'im.t6':{tr:'Web3',en:'Web3',de:'Web3'},
+    'im.l6':{tr:'GTM & token stratejisiyle desteklenen Web3 projesi',en:'Web3 projects supported with GTM & token strategy',de:'Web3-Projekte mit GTM- & Token-Strategie unterstützt'},
+    /* career */
+    'ca.idx':{tr:'03 — Kariyer',en:'03 — Career',de:'03 — Werdegang'},
+    'ca.h2':{tr:'Yirmi yıl, <em>tek bir yörünge.</em>',en:'Two decades, <em>one trajectory.</em>',de:'Zwei Jahrzehnte, <em>eine Bahn.</em>'},
+    'j1.role':{tr:'Global İş Geliştirme Direktörü',en:'Head of Global Business Development',de:'Leiter Globale Geschäftsentwicklung'},
+    'j1.desc':{tr:'CEO’ya bağlı. Talep yaratma stratejileri ve yeni ürün lansmanları belirler, ortaklıkları müzakere eder; kurumsal stratejiyle uyumlu finansal modelleme, yönetişim ve iş zekâsı çerçeveleri yürütürüm.',en:'Reporting to the CEO. Formulate demand-creation strategies and new product launches, negotiate partnerships, and run financial modeling, governance and business-intelligence frameworks aligned to corporate strategy.',de:'Berichtet an den CEO. Entwicklung von Nachfragestrategien und Produkteinführungen, Verhandlung von Partnerschaften sowie Finanzmodellierung, Governance und Business-Intelligence-Rahmen im Einklang mit der Unternehmensstrategie.'},
+    'j1.w1':{tr:'40+ Web3 projesine GTM & token stratejisiyle destek',en:'Supported 40+ Web3 projects with go-to-market & token strategies',de:'40+ Web3-Projekte mit Go-to-Market- & Token-Strategien unterstützt'},
+    'j1.w2':{tr:'Kurumsal & startup yöntemlerini birleştiren ölçeklenebilir büyüme sistemleri tasarladı',en:'Designed scalable growth systems blending corporate & startup methods',de:'Skalierbare Wachstumssysteme aus Konzern- & Startup-Methoden entworfen'},
+    'j2.role':{tr:'Kıdemli Yönetici / Kurucu',en:'Senior Manager / Owner',de:'Senior Manager / Inhaber'},
+    'j2.desc':{tr:'Derinlemesine araştırma, anket ve bilgisayar modelleriyle strateji doğrulama; müşteri raporlaması, eğitim programları, paydaş yönetimi ve ROI disiplinli iş planlaması.',en:'In-depth research, surveys and computer-modeled validation of business strategy; client reporting, training programmes, stakeholder engagement and ROI-disciplined business planning.',de:'Eingehende Recherche, Umfragen und computergestützte Validierung der Geschäftsstrategie; Kundenberichte, Schulungsprogramme, Stakeholder-Management und ROI-disziplinierte Geschäftsplanung.'},
+    'j2.w1':{tr:'EeMEAR bölgesinde 80+ yeni bayi kazandırıldı',en:'Introduced 80+ new dealers across the EeMEAR region',de:'80+ neue Händler in der EeMEAR-Region gewonnen'},
+    'j2.w2':{tr:'Hedefleri aşan 70+ satış & pazarlama kampanyası yürütüldü',en:'Executed 70+ sales & marketing campaigns exceeding targets',de:'70+ Vertriebs- & Marketingkampagnen über Plan umgesetzt'},
+    'j3.role':{tr:'Bölge Satış Müdürü',en:'Territory Sales Manager',de:'Gebietsverkaufsleiter'},
+    'j3.desc':{tr:'Afrika, Orta Doğu, Güneybatı Asya, Türkiye, Yunanistan, Balkanlar ve Doğu Avrupa’da günlük operasyonların sahibi — pazar & rekabet analizi, bayi geliştirme ve danışmanlık temelli satış.',en:'Owned daily operations across Africa, the Middle East, South West Asia, Türkiye, Greece, the Balkans and Eastern Europe — market & competition analysis, dealer development and consultative sales.',de:'Verantwortung für das Tagesgeschäft in Afrika, dem Nahen Osten, Südwestasien, der Türkei, Griechenland, dem Balkan und Osteuropa — Markt- & Wettbewerbsanalyse, Händlerentwicklung und beratender Vertrieb.'},
+    'j3.w1':{tr:'4 karmaşık proje tamamlandı; bölgesel satış & pazar payı arttı',en:'Completed 4 complex projects, boosting regional sales & share',de:'4 komplexe Projekte abgeschlossen, regionaler Umsatz & Anteil gesteigert'},
+    'j3.w2':{tr:'Süreç optimizasyonuyla bölgesel büyüme %10+ arttı',en:'Increased regional growth by 10%+ through process optimisation',de:'Regionales Wachstum durch Prozessoptimierung um 10%+ gesteigert'},
+    'j4.role':{tr:'Prografik Kanallar & VI Müdürü',en:'Prographics Channels & VI Manager',de:'Prographics-Kanäle & VI-Manager'},
+    'j4.desc':{tr:'Kısa, orta ve uzun vadeli kanal stratejisi kurdu; bayi & distribütör uyumunu yönetti, entegre pazarlama kampanyaları, sponsorluklar ve fuarlar tasarladı; ürün lansmanları, fiyatlandırma ve yol haritalarını denetledi.',en:'Built short, mid and long-term channel strategy, managed dealer & distributor alignment, designed integrated marketing campaigns, sponsorships and exhibitions, and oversaw product launches, pricing and roadmaps.',de:'Aufbau kurz-, mittel- und langfristiger Kanalstrategien, Steuerung der Händler- & Distributorenabstimmung, Gestaltung integrierter Marketingkampagnen, Sponsorings und Messen sowie Verantwortung für Produkteinführungen, Preisgestaltung und Roadmaps.'},
+    'j4.w1':{tr:'Türkiye & EEMEAR bölgesinde pazar payını büyüttü',en:'Grew market share in Türkiye & the EEMEAR region',de:'Marktanteil in der Türkei & EEMEAR-Region ausgebaut'},
+    'j4.w2':{tr:'Geliri & marka görünürlüğünü artıran entegre kampanyalar yürüttü',en:'Executed integrated campaigns lifting revenue & brand visibility',de:'Integrierte Kampagnen für mehr Umsatz & Markenpräsenz umgesetzt'},
+    'j5.role':{tr:'Perakende Kanal Müdürü',en:'Retail Channel Manager',de:'Retail-Channel-Manager'},
+    'j5.desc':{tr:'Perakende hesaplarını ve stok kontrolünü yönetti, yeni hesaplar açtı ve mevcut ilişkileri derinleştirdi, müşteri temsilcilerini eğitti, ürün lansmanları ve satış etkinlikleri düzenledi.',en:'Managed retail accounts and stock control, opened new accounts and deepened existing relationships, trained customer representatives and ran product announcements and sales events.',de:'Verwaltung von Einzelhandelskonten und Bestandskontrolle, Eröffnung neuer Konten und Vertiefung bestehender Beziehungen, Schulung von Kundenbetreuern sowie Produktankündigungen und Verkaufsevents.'},
+    'j5.w1':{tr:'Satış hedeflerini aştı ve perakende kanal etkinliğini artırdı',en:'Exceeded sales targets and lifted retail channel effectiveness',de:'Verkaufsziele übertroffen und Effektivität des Retail-Kanals gesteigert'},
+    'j6.role':{tr:'Adobe Ürün Müdürü',en:'Adobe Product Manager',de:'Adobe Produktmanager'},
+    'j6.desc':{tr:'Ürün lansmanları, basın bültenleri ve eğitim seminerleri hazırladı, satış ekiplerini ve envanteri yönetti, son kullanıcılarla doğrudan ilişki kurarak yüksek ürün memnuniyeti sağladı.',en:'Crafted product launches, press releases and training seminars, supervised sales teams and inventory, and engaged end-users directly to sustain high product satisfaction.',de:'Gestaltung von Produkteinführungen, Pressemitteilungen und Schulungsseminaren, Leitung von Vertriebsteams und Lagerbestand sowie direkter Kundenkontakt für hohe Produktzufriedenheit.'},
+    'j6.w1':{tr:'Adobe Creative Suite 3 lansmanını yönetti (600 katılımcı)',en:'Led the Adobe Creative Suite 3 launch (600 participants)',de:'Adobe Creative Suite 3-Launch geleitet (600 Teilnehmer)'},
+    'j6.w2':{tr:'Adobe Acrobat 8 lansmanını yönetti (400 katılımcı)',en:'Managed Adobe Acrobat 8 launch (400 participants)',de:'Adobe Acrobat 8-Launch verantwortet (400 Teilnehmer)'},
+    'j7.role':{tr:'Satış Müdürü',en:'Sales Manager',de:'Vertriebsleiter'},
+    'j7.desc':{tr:'Siparişleri, satış kontrolünü ve stok optimizasyonunu yönetti, sektörel trend ve talebi analiz etti, yeni satış kanalları geliştirdi ve proaktif müşteri ilişkileri yürüttü.',en:'Managed orders, sales control and stock optimisation, analysed sectoral trends and demand, developed new sales channels and ran proactive customer relationship management.',de:'Verwaltung von Aufträgen, Verkaufssteuerung und Bestandsoptimierung, Analyse von Branchentrends und Nachfrage, Entwicklung neuer Vertriebskanäle und proaktives Kundenbeziehungsmanagement.'},
+    'j7.w1':{tr:'Sürdürülebilir satış & memnuniyet kurdu; kanalları güçlendirdi',en:'Built sustainable sales & satisfaction; strengthened channels',de:'Nachhaltigen Vertrieb & Zufriedenheit aufgebaut; Kanäle gestärkt'},
+    'now':{tr:'Günümüz',en:'Present',de:'Heute'},
+    /* skills */
+    'sk.idx':{tr:'04 — Yetkinlikler',en:'04 — Capabilities',de:'04 — Kompetenzen'},
+    'sk.h2':{tr:'Temel <em>yetkinlikler.</em>',en:'Core <em>competencies.</em>',de:'Kern<em>kompetenzen.</em>'},
+    'sk.g1':{tr:'Liderlik & Strateji',en:'Leadership & Strategy',de:'Führung & Strategie'},
+    'sk.g2':{tr:'Büyüme & Satış',en:'Growth & Sales',de:'Wachstum & Vertrieb'},
+    'sk.g3':{tr:'Teknoloji & Gelecek',en:'Technology & Future',de:'Technologie & Zukunft'},
+    'sk.g4':{tr:'Pazarlama & İletişim',en:'Marketing & Communication',de:'Marketing & Kommunikation'},
+    /* credentials */
+    'cr.idx':{tr:'05 — Temel',en:'05 — Foundation',de:'05 — Fundament'},
+    'cr.h2':{tr:'Eğitim & <em>sertifikalar.</em>',en:'Education & <em>credentials.</em>',de:'Ausbildung & <em>Qualifikationen.</em>'},
+    'cr.mba':{tr:'İşletme Yüksek Lisansı (MBA)',en:'Master of Business Administration',de:'Master of Business Administration'},
+    'cr.bsc':{tr:'Siyaset Bilimi & Uluslararası İlişkiler (Lisans)',en:'BSc, Political Science & International Relations',de:'B.Sc. Politikwissenschaft & Internationale Beziehungen'},
+    'cr.uni':{tr:'Yeditepe Üniversitesi, İstanbul',en:'Yeditepe University, Istanbul',de:'Yeditepe Universität, Istanbul'},
+    'cr.langs':{tr:'Diller',en:'Languages',de:'Sprachen'},
+    'cr.certs':{tr:'Sertifikalar',en:'Certifications',de:'Zertifikate'},
+    'cr.assoc':{tr:'Kurucu üye — Erenköy Rotaract & BNI Action',en:'Founding member — Erenköy Rotaract & BNI Action',de:'Gründungsmitglied — Erenköy Rotaract & BNI Action'},
+    'c.org':{tr:'Stratejik Yönetim & İnovasyon',en:'Strategic Management & Innovation',de:'Strategisches Management & Innovation'},
+    'c.neg':{tr:'Stratejik & İkna Edici Müzakere',en:'Strategic & Persuasive Negotiation',de:'Strategische & überzeugende Verhandlung'},
+    'c.fin':{tr:'Finansal Piyasalar — Onur Derecesi',en:'Financial Markets — Honors',de:'Finanzmärkte — mit Auszeichnung'},
+    'c.organ':{tr:'Organizasyonel Analiz',en:'Organizational Analysis',de:'Organisationsanalyse'},
+    'c.lead':{tr:'21. Yüzyıl Organizasyonlarında Liderlik',en:'Leadership in 21st Century Organizations',de:'Führung in Organisationen des 21. Jahrhunderts'},
+    'c.syn':{tr:'Sinerjik Satış Yönetimi',en:'Synergic Sales Management',de:'Synergetisches Vertriebsmanagement'},
+    'lv.native':{tr:'Ana dil',en:'Native',de:'Muttersprache'},
+    'lv.exc':{tr:'Çok iyi',en:'Excellent',de:'Sehr gut'},
+    'lv.prof':{tr:'İyi',en:'Proficient',de:'Fließend'},
+    'lv.beg':{tr:'Başlangıç',en:'Beginner',de:'Grundkenntnisse'},
+    'ln.tr':{tr:'Türkçe',en:'Turkish',de:'Türkisch'},
+    'ln.en':{tr:'İngilizce',en:'English',de:'Englisch'},
+    'ln.az':{tr:'Azerice',en:'Azeri',de:'Aserisch'},
+    'ln.de':{tr:'Almanca',en:'German',de:'Deutsch'},
+    /* contact */
+    'co.idx':{tr:'06 — Konuşalım',en:'06 — Let’s talk',de:'06 — Sprechen wir'},
+    'co.h2':{tr:'<em>Yeni bölümü</em><br>birlikte yazalım.',en:'Let’s build the<br><em>next chapter.</em>',de:'Lassen Sie uns das<br><em>nächste Kapitel</em> bauen.'},
+    'co.sub':{tr:'MENA, EMEA, Doğu Avrupa ve Orta Asya genelinde kıdemli iş geliştirme & satış liderliği rollerine açığım — relokasyona da açığım.',en:'Open to senior business development & sales leadership roles across MENA, EMEA, EE & Central Asia — and open to relocation.',de:'Offen für Senior-Rollen in Business Development & Vertrieb in MENA, EMEA, Osteuropa & Zentralasien — und offen für einen Umzug.'},
+    'co.email':{tr:'E-posta',en:'Email',de:'E-Mail'},
+    'co.li':{tr:'LinkedIn',en:'LinkedIn',de:'LinkedIn'},
+    'ft.left':{tr:'Çağdaş Sevgen — İş Geliştirme & Satış',en:'Çağdaş Sevgen — Business Development & Sales',de:'Çağdaş Sevgen — Business Development & Vertrieb'}
+  };
+
+  function apply(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      const v = D[k] && (D[k][lang] || D[k].en);
+      if(v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+    try{ localStorage.setItem('cv_lang', lang); }catch(e){}
+    window.dispatchEvent(new CustomEvent('langchange',{detail:lang}));
+  }
+  function init(){
+    let lang='en';
+    try{ lang = localStorage.getItem('cv_lang') || 'en'; }catch(e){}
+    document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+    apply(lang);
+  }
+  window.I18N = { dict:D, apply, init };
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+<script>
+/* ============================================================
+   App choreography — loader, kinetic text (slide in/out),
+   scene state per section, counters, timeline, nav
+   ============================================================ */
+(function () {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* ---------- LOADER ---------- */
+  const loader = $('#loader'), ldBar = $('.ld-line i'), ldPct = $('.ld-pct');
+  function startReveal(){ document.body.style.overflow = ''; const h=$('.hero'); h.classList.add('in'); setTimeout(()=>{ const t=h.querySelector('h1'); if(t) t.classList.add('revealed'); }, 1500); onScroll(); }
+  function finishLoad(){
+    let p = 0;
+    (function tick(){
+      p += Math.random()*14+6; if(p>=100) p=100;
+      if(ldBar) ldBar.style.width = p+'%';
+      if(ldPct) ldPct.textContent = String(Math.floor(p)).padStart(3,'0');
+      if(p<100) setTimeout(tick, 80+Math.random()*70);
+      else setTimeout(()=>{ loader.classList.add('done'); startReveal(); }, 420);
+    })();
+  }
+  document.body.style.overflow = 'hidden';
+  if(document.readyState === 'complete') finishLoad();
+  else addEventListener('load', finishLoad);
+
+  /* ---------- scene state per section ---------- */
+  // [sceneIndex, side]  side: -1 viz-left / +1 viz-right
+  const SCENE = {
+    top:        [0,  0.85, 1.0],   // network
+    profile:    [1, -1.05, 0.95],  // orbit (text right)
+    impact:     [2,  1.2,  0.9],   // finance grid (viz pushed right)
+    career:     [3, -1.9,  0.3],   // helix (viz far left + dimmed, text clear)
+    skills:     [4, -1.05, 0.55],  // AI brain (text right, dimmed for cards)
+    credentials:[5, -1.25, 0.7],   // lattice (viz left)
+    contact:    [6,  0.9,  1.0]    // converge
+  };
+
+  /* ---------- progress / chrome / globe ---------- */
+  const bar = $('.progress'), topbar = $('.topbar');
+  let lastY = 0;
+  function onScroll(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const y = h.scrollTop || document.body.scrollTop;
+    const p = max>0 ? y/max : 0;
+    if(bar) bar.style.width = (p*100)+'%';
+    if(window.CVScene) window.CVScene.progress(p);
+    if(topbar) topbar.classList.toggle('hide', y>lastY && y>500);
+    lastY = y;
+    kinetic(); updateDots();
+  }
+
+  /* ---------- KINETIC TEXT: slide in from a side, slide out the other ---------- */
+  const kxEls = $$('.kx');
+  kxEls.forEach((el,i)=>{ if(!el.dataset.k) el.dataset.k = (i%2? 'r':'l'); });
+  // Precompute direction and amount once — they never change at runtime
+  const kxDirs = kxEls.map(el => el.dataset.k === 'r' ? 1 : -1);
+  const kxAmts = kxEls.map(el => parseFloat(el.dataset.amt || '90'));
+  function kinetic(){
+    if(reduced) return;
+    const vh = innerHeight;
+    // Batch all reads FIRST to avoid interleaved read/write layout thrashing
+    const rects = kxEls.map(el => el.getBoundingClientRect());
+    // Then batch all style writes
+    for(let i = 0; i < kxEls.length; i++){
+      const r = rects[i];
+      const center = r.top + r.height/2;
+      // c: +1 at bottom edge, 0 at viewport centre, -1 at top edge
+      let c = (center - vh/2) / (vh/2);
+      c = Math.max(-1.3, Math.min(1.3, c));
+      // enters from +dir at bottom, rests at centre, exits to -dir at top
+      const x = kxDirs[i] * c * kxAmts[i];
+      // stay fully visible across the central band; fade only near the edges
+      const fade = Math.max(0, Math.abs(c) - 0.42) / 0.78;
+      const ko = Math.max(0, 1 - fade * fade);
+      kxEls[i].style.setProperty('--kx', Math.round(x)+'px');
+      kxEls[i].style.setProperty('--ko', ko.toFixed(2));
+    }
+  }
+
+  /* ---------- count up ---------- */
+  function countUp(el){
+    const target = parseFloat(el.dataset.count), dur=1600, start=performance.now();
+    (function step(now){
+      const t=Math.min((now-start)/dur,1), e=1-Math.pow(1-t,3);
+      el.textContent = Math.round(target*e);
+      if(t<1) requestAnimationFrame(step); else el.textContent=el.dataset.count;
+    })(start);
+  }
+  const cO = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ reduced? e.target.textContent=e.target.dataset.count : countUp(e.target); cO.unobserve(e.target);} }), {threshold:0.6});
+  $$('[data-count]').forEach(el=>cO.observe(el));
+  const lO = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); lO.unobserve(e.target);} }), {threshold:0.4});
+  $$('.lang-row').forEach(el=>lO.observe(el));
+
+  /* ---------- nav dots + scene switching ---------- */
+  const sections = $$('[data-section]');
+  const dots = $$('.dots button');
+  dots.forEach(d=>d.addEventListener('click', ()=>{ const t=document.getElementById(d.dataset.target); if(t) t.scrollIntoView({behavior:'smooth'}); }));
+  let curId = null;
+  function updateDots(){
+    let cur = sections[0]? sections[0].id : null;
+    const mid = innerHeight*0.45;
+    sections.forEach(s=>{ if(s.getBoundingClientRect().top <= mid) cur = s.id; });
+    dots.forEach(d=>d.classList.toggle('active', d.dataset.target===cur));
+    if(cur!==curId){ curId=cur; const st=SCENE[cur]; if(st && window.CVScene) window.CVScene.setState(st[0], st[1], st[2]); }
+  }
+
+  /* ---------- timeline ---------- */
+  const tlItems = $$('.tl-item');
+  const tlYear=$('.tl-year'), tlCount=$('.tl-count'), tlProg=$('.tl-prog i'), tlLoc=$('.tl-loc');
+  if(tlItems.length && tlYear){
+    const tlO = new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){
+        tlItems.forEach(i=>i.classList.remove('active'));
+        e.target.classList.add('active');
+        const idx=tlItems.indexOf(e.target);
+        tlYear.textContent=e.target.dataset.year;
+        if(tlLoc) tlLoc.textContent=e.target.dataset.loc||'';
+        if(tlCount) tlCount.textContent=String(idx+1).padStart(2,'0')+' / '+String(tlItems.length).padStart(2,'0');
+        if(tlProg) tlProg.style.width=((idx+1)/tlItems.length*100)+'%';
+      }
+    }), {threshold:0.1, rootMargin:'-42% 0px -42% 0px'});
+    tlItems.forEach(i=>tlO.observe(i));
+    const seenO = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); seenO.unobserve(e.target); } }), {threshold:0.12});
+    tlItems.forEach(i=>seenO.observe(i));
+  }
+
+  /* ---------- rAF scroll loop ---------- */
+  let ticking=false;
+  addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(()=>{ onScroll(); ticking=false; }); ticking=true; } }, {passive:true});
+  addEventListener('resize', kinetic);
+  addEventListener('langchange', ()=>{ requestAnimationFrame(kinetic); });
+  onScroll();
+
+  const yEl=$('#cur-year'); if(yEl) yEl.textContent=new Date().getFullYear();
+})();
+
+</script>
+</body>
+</html>
