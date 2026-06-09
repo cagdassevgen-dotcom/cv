@@ -560,7 +560,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
       <h2 class="contact serif kx" data-k="l" data-amt="70" style="margin-top:24px" data-i18n="co.h2">Let’s build the<br><em>next chapter.</em></h2>
       <p class="csub kx" data-k="l" data-amt="55" data-i18n="co.sub">Open to senior business development &amp; sales leadership roles across the EEMEAR region and beyond. Based in Istanbul, Türkiye.</p>
       <div class="clinks kx" data-k="l" data-amt="45">
-        <a class="clink" href="/cdn-cgi/l/email-protection#8ae9ebedeeebf9f9effcedefe4caede7ebe3e6a4e9e5e7"><span class="k" data-i18n="co.email">Email</span><span class="v"><span class="__cf_email__" data-cfemail="4320222427223030263524262d03242e222a2f6d202c2e">[email&#160;protected]</span></span><span class="arr">→</span></a>
+        <a class="clink" id="email-link" data-user="cagdassevgen" data-domain="gmail.com"><span class="k" data-i18n="co.email">Email</span><span class="v" id="email-text">·····</span><span class="arr">→</span></a>
         <a class="clink" href="https://www.linkedin.com/in/cagdassevgen/" target="_blank" rel="noopener"><span class="k" data-i18n="co.li">LinkedIn</span><span class="v">/in/cagdassevgen</span><span class="arr">→</span></a>
       </div>
     </div>
@@ -573,7 +573,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* ============================================================
    Cinematic morphing particle field — Three.js
@@ -1184,6 +1184,14 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   onScroll();
 
   const yEl=$('#cur-year'); if(yEl) yEl.textContent=new Date().getFullYear();
+
+  /* assemble email at runtime so Cloudflare/GitHub Pages can't obfuscate it */
+  const el=$('#email-link');
+  if(el){
+    const addr=el.dataset.user+'@'+el.dataset.domain;
+    el.setAttribute('href','mailto:'+addr);
+    const tx=$('#email-text'); if(tx) tx.textContent=addr;
+  }
 })();
 
 </script>
