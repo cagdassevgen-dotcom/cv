@@ -587,8 +587,8 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   const canvas = document.getElementById('bg-canvas');
   let W = innerWidth, H = innerHeight;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.setSize(W, H);
 
   const scene = new THREE.Scene();
@@ -600,7 +600,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
 
   const CYAN = new THREE.Color('#5cc8ff');
   const VIOLET = new THREE.Color('#9d8cff');
-  const N = 3600;
+  const N = (matchMedia('(max-width:760px)').matches || navigator.hardwareConcurrency <= 4) ? 1600 : 2400;
 
   /* ---- soft round sprite ---- */
   function dot() {
@@ -747,23 +747,33 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   function resize() { W = innerWidth; H = innerHeight; camera.aspect = W / H; camera.updateProjectionMatrix(); renderer.setSize(W, H); }
   addEventListener('resize', resize);
 
+  // pause the loop when tab is hidden or the page is scrolled far past the backdrop's relevance
+  let visible = true;
+  let morphing = true, lastActive = -1;
+  document.addEventListener('visibilitychange', () => { visible = !document.hidden; if (visible) requestAnimationFrame(animate); });
+
   function animate() {
+    if (!visible) return;
     requestAnimationFrame(animate);
     const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
     mouseX += (tMouseX - mouseX) * 0.05; mouseY += (tMouseY - mouseY) * 0.05;
     scrollP += (tScrollP - scrollP) * 0.06; sideX += (tSide - sideX) * 0.06;
 
-    // morph toward active target
-    const tgt = STATES[active], k = reduced ? 1 : 0.055;
-    for (let i = 0; i < N * 3; i++) cur[i] += (tgt[i] - cur[i]) * k;
-    geo.attributes.position.needsUpdate = true;
-
-    // edges follow current particle positions
-    for (let e = 0; e < EPAIRS.length; e++) {
-      const pi = EPAIRS[e] * 3, oo = e * 3;
-      edgePos[oo] = cur[pi]; edgePos[oo+1] = cur[pi+1]; edgePos[oo+2] = cur[pi+2];
+    // morph toward active target (skip the heavy work once settled)
+    if (active !== lastActive) { morphing = true; lastActive = active; }
+    if (morphing) {
+      const tgt = STATES[active], k = reduced ? 1 : 0.055;
+      let maxd = 0;
+      for (let i = 0; i < N * 3; i++) { const d = tgt[i] - cur[i]; cur[i] += d * k; const ad = d < 0 ? -d : d; if (ad > maxd) maxd = ad; }
+      geo.attributes.position.needsUpdate = true;
+      // edges follow current particle positions
+      for (let e = 0; e < EPAIRS.length; e++) {
+        const pi = EPAIRS[e] * 3, oo = e * 3;
+        edgePos[oo] = cur[pi]; edgePos[oo+1] = cur[pi+1]; edgePos[oo+2] = cur[pi+2];
+      }
+      edgeGeo.attributes.position.needsUpdate = true;
+      if (maxd < 0.0015) morphing = false;
     }
-    edgeGeo.attributes.position.needsUpdate = true;
     edgeW += (EDGE_WEIGHT[active] - edgeW) * 0.05;
     vizOp += (tViz - vizOp) * 0.06;
     pMat.opacity = 0.8 * vizOp;
