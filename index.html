@@ -45,7 +45,7 @@ h1,h2,h3{font-weight:400;line-height:1.02;letter-spacing:-0.02em}
 .grad{background:linear-gradient(105deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
 
 /* fixed cinematic canvas */
-#bg-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;pointer-events:none}
+#bg-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
 .bg-grad{position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
     radial-gradient(80% 60% at 18% 12%, rgba(47,127,208,0.16), transparent 60%),
@@ -253,9 +253,37 @@ h1,h2,h3{font-weight:400;line-height:1.02;letter-spacing:-0.02em}
 footer{position:relative;z-index:5;padding:40px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line)}
 footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 
+/* ---------------- MOTION DESIGN LAYER ---------------- */
+/* word-mask reveal for display headings */
+.ml-w{display:inline-block;overflow:hidden;padding:.16em .07em;margin:-.16em -.07em;vertical-align:top}
+.ml-i{display:inline-block;transform:translateY(112%);transition:transform .82s var(--ease);will-change:transform}
+.ml.in .ml-i{transform:none}
+
+/* staggered group children */
+.stg{opacity:0;transform:translateY(18px)}
+.stg.stg-in{opacity:1;transform:none}
+
+/* draw-in accent lines */
+.hero-eyebrow::before,.eyebrow::before{transform-origin:left center;transform:scaleX(0);transition:transform .9s var(--ease) .08s}
+.hero-eyebrow.lit::before,.eyebrow.lit::before{transform:scaleX(1)}
+.lead-r .eyebrow::before{transform-origin:right center}
+
+/* title-sequence loader */
+.ld-seq{display:flex;flex-direction:column;align-items:center;gap:14px}
+.ld-k,.ld-sub{font-family:var(--mono);font-size:.64rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-3);
+  opacity:0;transform:translateY(10px);clip-path:inset(0 100% 0 0);animation:ldClip .9s var(--ease) forwards}
+.ld-k{animation-delay:.05s}
+.ld-sub{color:var(--acc);animation-delay:.85s}
+.ld-mono{overflow:hidden}
+@keyframes ldClip{to{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
+
 @media(prefers-reduced-motion:reduce){
   .kx{transform:none!important;opacity:1!important}
   .hero h1 .ln>span{transform:none!important}
+  .ml-i{transform:none!important}
+  .stg{opacity:1!important;transform:none!important}
+  .hero-eyebrow::before,.eyebrow::before{transform:scaleX(1)!important}
+  .ld-k,.ld-sub{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important}
 }
 
 </style>
@@ -263,7 +291,11 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
 <body>
 
 <div id="loader">
-  <div class="ld-mono"><span>Ç</span><span>S</span></div>
+  <div class="ld-seq">
+    <span class="ld-k" data-i18n="h.eyebrow">Business Development &amp; Sales — EEMEAR</span>
+    <div class="ld-mono"><span>Ç</span><span>S</span></div>
+    <span class="ld-sub">Executive Portfolio</span>
+  </div>
   <div class="ld-line"><i></i></div>
   <div class="ld-meta"><span>Çağdaş Sevgen</span><span class="ld-pct">000</span></div>
 </div>
@@ -528,7 +560,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
       <h2 class="contact serif kx" data-k="l" data-amt="70" style="margin-top:24px" data-i18n="co.h2">Let’s build the<br><em>next chapter.</em></h2>
       <p class="csub kx" data-k="l" data-amt="55" data-i18n="co.sub">Open to senior business development &amp; sales leadership roles across the EEMEAR region and beyond. Based in Istanbul, Türkiye.</p>
       <div class="clinks kx" data-k="l" data-amt="45">
-        <a class="clink" href="mailto:cagdassevgen@gmail.com"><span class="k" data-i18n="co.email">Email</span><span class="v">cagdassevgen@gmail.com</span><span class="arr">→</span></a>
+        <a class="clink" href="/cdn-cgi/l/email-protection#8ae9ebedeeebf9f9effcedefe4caede7ebe3e6a4e9e5e7"><span class="k" data-i18n="co.email">Email</span><span class="v"><span class="__cf_email__" data-cfemail="4320222427223030263524262d03242e222a2f6d202c2e">[email&#160;protected]</span></span><span class="arr">→</span></a>
         <a class="clink" href="https://www.linkedin.com/in/cagdassevgen/" target="_blank" rel="noopener"><span class="k" data-i18n="co.li">LinkedIn</span><span class="v">/in/cagdassevgen</span><span class="arr">→</span></a>
       </div>
     </div>
@@ -541,7 +573,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
 
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* ============================================================
    Cinematic morphing particle field — Three.js
@@ -555,10 +587,8 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   const canvas = document.getElementById('bg-canvas');
   let W = innerWidth, H = innerHeight;
 
-  const isMobile = W < 768 || /Mobi|Android/i.test(navigator.userAgent);
-  // Remove preserveDrawingBuffer (was disabling GPU double-buffering); lower antialias/dpr on mobile
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1 : 1.5));
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(W, H);
 
   const scene = new THREE.Scene();
@@ -570,18 +600,17 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
 
   const CYAN = new THREE.Color('#5cc8ff');
   const VIOLET = new THREE.Color('#9d8cff');
-  // Adaptive particle count: fewer on mobile to stay within frame budget
-  const N = isMobile ? 1400 : 2600;
+  const N = 3600;
 
   /* ---- soft round sprite ---- */
   function dot() {
-    const c = document.createElement('canvas'); c.width = c.height = 32;
+    const c = document.createElement('canvas'); c.width = c.height = 64;
     const g = c.getContext('2d');
-    const grd = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+    const grd = g.createRadialGradient(32, 32, 0, 32, 32, 32);
     grd.addColorStop(0, 'rgba(255,255,255,1)');
     grd.addColorStop(0.3, 'rgba(255,255,255,0.85)');
     grd.addColorStop(1, 'rgba(255,255,255,0)');
-    g.fillStyle = grd; g.fillRect(0, 0, 32, 32);
+    g.fillStyle = grd; g.fillRect(0, 0, 64, 64);
     return new THREE.CanvasTexture(c);
   }
   const DOT = dot();
@@ -681,8 +710,8 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   group.add(points);
 
   /* ---- connective edges (subset) ---- */
-  const M = 200, EPAIRS = [];
-  for (let k = 0; k < 160; k++) {
+  const M = 300, EPAIRS = [];
+  for (let k = 0; k < 260; k++) {
     const a = Math.floor(Math.random() * M);
     const b = Math.min(M - 1, a + 1 + Math.floor(Math.random() * 6));
     EPAIRS.push(a, b);
@@ -715,15 +744,11 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clock = new THREE.Clock();
 
-  // Pause rendering when tab is not visible; reset clock to avoid dt spike on resume
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) clock.getDelta(); });
-
   function resize() { W = innerWidth; H = innerHeight; camera.aspect = W / H; camera.updateProjectionMatrix(); renderer.setSize(W, H); }
   addEventListener('resize', resize);
 
   function animate() {
     requestAnimationFrame(animate);
-    if (document.hidden) return;
     const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
     mouseX += (tMouseX - mouseX) * 0.05; mouseY += (tMouseY - mouseY) * 0.05;
     scrollP += (tScrollP - scrollP) * 0.06; sideX += (tSide - sideX) * 0.06;
@@ -794,10 +819,10 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
     'h.scroll': { tr:'Keşfetmek için kaydır', en:'Scroll to explore', de:'Zum Entdecken scrollen' },
     /* profile */
     'p.idx':  { tr:'01 — Profil', en:'01 — Profile', de:'01 — Profil' },
-    'p.h2':   { tr:'<em>Ölçeklenebilir</em> büyüme<br>sistemleri kuran bir stratejist.', en:'A <em>strategist</em> who builds<br>scalable growth systems.', de:'Ein <em>Stratege</em>, der skalierbare<br>Wachstumssysteme aufbaut.' },
-    'p.lead': { tr:'<em>Yirmi yılı aşkın</em> deneyimiyle EEMEAR bölgesinde ekipler kuran, şirketleri büyüten ve güçlü ağlar geliştiren kıdemli bir iş geliştirme & satış lideri.', en:'Seasoned business development & sales leader with over <em>two decades</em> building teams, scaling companies and expanding networks across the EEMEAR region.', de:'Erfahrener Business-Development- & Vertriebsleiter mit über <em>zwei Jahrzehnten</em> Erfahrung im Aufbau von Teams, der Skalierung von Unternehmen und dem Ausbau von Netzwerken in der EEMEAR-Region.' },
-    'p.b1':   { tr:'<strong>Çok kültürlü ekipler</strong> kurar ve yönetirim; strateji ile operasyonel hedefleri belirler, uçtan uca <strong>ROI & bütçe disiplini</strong> yürütürüm — pazar fırsatını kalıcı, bileşik büyümeye çeviririm.', en:'I build and lead <strong>multicultural teams</strong>, set strategy and operating objectives, and run <strong>ROI & budget discipline</strong> end to end — translating market opportunity into durable, compounding growth.', de:'Ich baue und führe <strong>multikulturelle Teams</strong>, definiere Strategie und operative Ziele und steuere <strong>ROI- & Budgetdisziplin</strong> durchgängig — und verwandle Marktchancen in nachhaltiges, kumulatives Wachstum.' },
-    'p.b2':   { tr:'Bugün odağım <strong>teknoloji, finans ve yapay zeka</strong> ile pazara açılmanın kesiştiği noktada: Web3, fintech ve veriye dayalı büyüme sistemleri — köklü bir iş ortağı ve bayi ağıyla güçlendirilmiş.', en:'Today my focus sits where <strong>technology, finance and AI</strong> meet go-to-market: Web3, fintech and data-driven growth systems, powered by a deep partner and dealer network.', de:'Heute liegt mein Fokus dort, wo <strong>Technologie, Finanzen und KI</strong> auf die Markteinführung treffen: Web3, Fintech und datengetriebene Wachstumssysteme, gestützt auf ein starkes Partner- und Händlernetzwerk.' },
+    'p.h2':   { tr:'Şirketleri <em>ölçeklenebilir</em><br>büyümeye taşıyan lider.', en:'A <em>strategist</em> who builds<br>scalable growth systems.', de:'Ein <em>Stratege</em>, der skalierbare<br>Wachstumssysteme aufbaut.' },
+    'p.lead': { tr:'<em>Çeyrek asra yakın</em> bir yolculukta; EEMEAR pazarlarını açma, ekipleri zirveye taşıma ve kalıcı büyüme yaratma fırsatı buldum.', en:'Over <em>nearly a quarter-century</em>, I have had the chance to open EEMEAR markets, take teams to their peak and create lasting growth.', de:'In <em>fast einem Vierteljahrhundert</em> durfte ich EEMEAR-Märkte erschließen, Teams zur Höchstform führen und nachhaltiges Wachstum schaffen.' },
+    'p.b1':   { tr:'Edindiğim deneyim ile <strong>çok kültürlü ekipleri</strong> yüksek performansa taşıma, stratejiyi sahaya ve sahayı sonuca dönüştürme fırsatım oldu; bu da uçtan uca <strong>ROI ve bütçe disiplininde</strong> kalıcı, katlanan ve gözle görülen büyüme sonuçlarına ulaşmama yardımcı oldu.', en:'The experience I have gained let me bring <strong>multicultural teams</strong> to high performance and turn strategy into action and action into results — which in turn helped me reach lasting, compounding and visible growth with end-to-end <strong>ROI & budget discipline</strong>.', de:'Die gewonnene Erfahrung erlaubte mir, <strong>multikulturelle Teams</strong> zu Höchstleistungen zu führen und Strategie in Umsetzung und Umsetzung in Ergebnisse zu verwandeln — was mir half, mit durchgängiger <strong>ROI- & Budgetdisziplin</strong> nachhaltiges, kumulatives und sichtbares Wachstum zu erzielen.' },
+    'p.b2':   { tr:'Bugün enerjimi, <strong>teknoloji, finans ve yapay zekânın</strong> pazara açılmayla buluştuğu noktaya veriyorum: Web3, fintech ve veriye dayalı büyüme — güçlü bir iş ortağı ve bayi ağıyla katlanan değer üretmek için.', en:'Today I focus my energy where <strong>technology, finance and AI</strong> meet go-to-market: Web3, fintech and data-driven growth — to create compounding value through a strong partner and dealer network.', de:'Heute richte ich meine Energie dorthin, wo <strong>Technologie, Finanzen und KI</strong> auf die Markteinführung treffen: Web3, Fintech und datengetriebenes Wachstum — um über ein starkes Partner- und Händlernetzwerk kumulativen Wert zu schaffen.' },
     /* regions */
     'r.africa':{tr:'Afrika',en:'Africa',de:'Afrika'},
     'r.me':{tr:'Orta Doğu',en:'Middle East',de:'Naher Osten'},
@@ -811,51 +836,51 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
     'r.ua':{tr:'Ukrayna',en:'Ukraine',de:'Ukraine'},
     'r.ru':{tr:'Rusya',en:'Russia',de:'Russland'},
     /* quote */
-    'q.text':{ tr:'“Sadece şirketleri büyütmüyorum; <em>ölçeklenebilir büyüme sistemleri</em> kuruyorum — geliri, operasyonu ve stratejiyi birleştirerek kalıcı sonuçlar üretiyorum.”', en:'“I don’t just grow companies; I <em>build scalable growth systems</em> — integrating revenue, operations and strategy to deliver sustainable results.”', de:'„Ich lasse Unternehmen nicht nur wachsen; ich <em>baue skalierbare Wachstumssysteme</em> — und verbinde Umsatz, Betrieb und Strategie für nachhaltige Ergebnisse.“' },
+    'q.text':{ tr:'“Yıllar içinde şunu öğrendim: kalıcı sonuç, geliri, operasyonu ve stratejiyi tek bir <em>büyüme motorunda</em> birleştirmekten doğar.”', en:'“Over the years I have learned this: lasting results come from uniting revenue, operations and strategy in a single <em>growth engine</em>.”', de:'„Über die Jahre habe ich gelernt: nachhaltige Ergebnisse entstehen, wenn man Umsatz, Betrieb und Strategie in einem einzigen <em>Wachstumsmotor</em> vereint.“' },
     'q.cite':{ tr:'— Yönetici Değer Önermesi', en:'— Executive Value Proposition', de:'— Führungs-Wertversprechen' },
     /* impact */
     'im.idx':{tr:'02 — Rakamlarla',en:'02 — By the numbers',de:'02 — In Zahlen'},
     'im.h2':{tr:'Ölçülebilir <em>etki.</em>',en:'Measurable <em>impact.</em>',de:'Messbare <em>Wirkung.</em>'},
     'im.t1':{tr:'Deneyim',en:'Experience',de:'Erfahrung'},
-    'im.l1':{tr:'EEMEAR genelinde iş geliştirme liderliği yılı',en:'Years leading business development across EEMEAR',de:'Jahre Leitung der Geschäftsentwicklung in EEMEAR'},
+    'im.l1':{tr:'EEMEAR’da iş geliştirme liderliğinde sahada deneyim',en:'Years leading business development across EEMEAR',de:'Jahre Leitung der Geschäftsentwicklung in EEMEAR'},
     'im.t2':{tr:'Pazara giriş',en:'Market entry',de:'Markteintritt'},
-    'im.l2':{tr:'EE, MEA & Türkiye’ye taşınan çok uluslu şirket',en:'Multinationals launched into EE, MEA & Türkiye',de:'Multinationale Unternehmen in EE, MEA & Türkei eingeführt'},
+    'im.l2':{tr:'EE, MEA & Türkiye pazarına taşınan çok uluslu marka',en:'Multinationals launched into EE, MEA & Türkiye',de:'Multinationale Unternehmen in EE, MEA & Türkei eingeführt'},
     'im.t3':{tr:'Büyüme',en:'Growth',de:'Wachstum'},
-    'im.l3':{tr:'Beş yıllık sürede sağlanan büyüme',en:'Growth delivered over a five-year span',de:'Wachstum über einen Zeitraum von fünf Jahren'},
+    'im.l3':{tr:'Beş yılda yaratılan büyüme ivmesi',en:'Growth delivered over a five-year span',de:'Wachstum über einen Zeitraum von fünf Jahren'},
     'im.t4':{tr:'Ağ',en:'Network',de:'Netzwerk'},
-    'im.l4':{tr:'EeMEAR’da kazandırılan yeni bayi & satıcı',en:'New dealers & resellers onboarded in EeMEAR',de:'Neue Händler & Wiederverkäufer in EeMEAR gewonnen'},
+    'im.l4':{tr:'EeMEAR ağına kazandırılan yeni bayi & iş ortağı',en:'New dealers & resellers onboarded in EeMEAR',de:'Neue Händler & Wiederverkäufer in EeMEAR gewonnen'},
     'im.t5':{tr:'Kampanya',en:'Campaigns',de:'Kampagnen'},
-    'im.l5':{tr:'Yürütülen satış & pazarlama kampanyası',en:'Sales & marketing campaigns executed',de:'Durchgeführte Vertriebs- & Marketingkampagnen'},
+    'im.l5':{tr:'Hayata geçirilen satış & pazarlama kampanyası',en:'Sales & marketing campaigns executed',de:'Durchgeführte Vertriebs- & Marketingkampagnen'},
     'im.t6':{tr:'Web3',en:'Web3',de:'Web3'},
-    'im.l6':{tr:'GTM & token stratejisiyle desteklenen Web3 projesi',en:'Web3 projects supported with GTM & token strategy',de:'Web3-Projekte mit GTM- & Token-Strategie unterstützt'},
+    'im.l6':{tr:'GTM & token stratejisiyle büyütülen Web3 projesi',en:'Web3 projects supported with GTM & token strategy',de:'Web3-Projekte mit GTM- & Token-Strategie unterstützt'},
     /* career */
     'ca.idx':{tr:'03 — Kariyer',en:'03 — Career',de:'03 — Werdegang'},
-    'ca.h2':{tr:'Yirmi yıl, <em>tek bir yörünge.</em>',en:'Two decades, <em>one trajectory.</em>',de:'Zwei Jahrzehnte, <em>eine Bahn.</em>'},
+    'ca.h2':{tr:'Çeyrek asır, <em>tek bir yörünge.</em>',en:'Two decades, <em>one trajectory.</em>',de:'Zwei Jahrzehnte, <em>eine Bahn.</em>'},
     'j1.role':{tr:'Global İş Geliştirme Direktörü',en:'Head of Global Business Development',de:'Leiter Globale Geschäftsentwicklung'},
-    'j1.desc':{tr:'CEO’ya bağlı. Talep yaratma stratejileri ve yeni ürün lansmanları belirler, ortaklıkları müzakere eder; kurumsal stratejiyle uyumlu finansal modelleme, yönetişim ve iş zekâsı çerçeveleri yürütürüm.',en:'Reporting to the CEO. Formulate demand-creation strategies and new product launches, negotiate partnerships, and run financial modeling, governance and business-intelligence frameworks aligned to corporate strategy.',de:'Berichtet an den CEO. Entwicklung von Nachfragestrategien und Produkteinführungen, Verhandlung von Partnerschaften sowie Finanzmodellierung, Governance und Business-Intelligence-Rahmen im Einklang mit der Unternehmensstrategie.'},
+    'j1.desc':{tr:'CEO’ya doğrudan bağlı olarak; talep yaratma stratejilerini ve yeni ürün lansmanlarını şekillendirme, stratejik ortaklıkları müzakere etme ve kurumsal vizyonla uyumlu finansal modelleme, yönetişim ve iş zekâsı çerçevelerini yönetme fırsatı buldum.',en:'Reporting directly to the CEO, I have had the chance to shape demand-creation strategies and new product launches, negotiate strategic partnerships, and run financial modeling, governance and business-intelligence frameworks aligned to the corporate vision.',de:'Direkt an den CEO berichtend, durfte ich Nachfragestrategien und Produkteinführungen gestalten, strategische Partnerschaften verhandeln sowie Finanzmodellierung, Governance und Business-Intelligence-Rahmen im Einklang mit der Unternehmensvision führen.'},
     'j1.w1':{tr:'40+ Web3 projesine GTM & token stratejisiyle destek',en:'Supported 40+ Web3 projects with go-to-market & token strategies',de:'40+ Web3-Projekte mit Go-to-Market- & Token-Strategien unterstützt'},
     'j1.w2':{tr:'Kurumsal & startup yöntemlerini birleştiren ölçeklenebilir büyüme sistemleri tasarladı',en:'Designed scalable growth systems blending corporate & startup methods',de:'Skalierbare Wachstumssysteme aus Konzern- & Startup-Methoden entworfen'},
     'j2.role':{tr:'Kıdemli Yönetici / Kurucu',en:'Senior Manager / Owner',de:'Senior Manager / Inhaber'},
-    'j2.desc':{tr:'Derinlemesine araştırma, anket ve bilgisayar modelleriyle strateji doğrulama; müşteri raporlaması, eğitim programları, paydaş yönetimi ve ROI disiplinli iş planlaması.',en:'In-depth research, surveys and computer-modeled validation of business strategy; client reporting, training programmes, stakeholder engagement and ROI-disciplined business planning.',de:'Eingehende Recherche, Umfragen und computergestützte Validierung der Geschäftsstrategie; Kundenberichte, Schulungsprogramme, Stakeholder-Management und ROI-disziplinierte Geschäftsplanung.'},
+    'j2.desc':{tr:'Derinlemesine araştırma, anket ve modelleme ile iş stratejilerini doğrulama; müşteri raporlaması, eğitim programları, paydaş yönetimi ve ROI disiplinli iş planlaması alanlarında çalışma fırsatım oldu.',en:'I had the opportunity to work across in-depth research, surveys and modeling to validate business strategy, along with client reporting, training programmes, stakeholder management and ROI-disciplined business planning.',de:'Ich hatte die Gelegenheit, mit eingehender Recherche, Umfragen und Modellierung Geschäftsstrategien zu validieren — dazu Kundenberichte, Schulungsprogramme, Stakeholder-Management und ROI-disziplinierte Geschäftsplanung.'},
     'j2.w1':{tr:'EeMEAR bölgesinde 80+ yeni bayi kazandırıldı',en:'Introduced 80+ new dealers across the EeMEAR region',de:'80+ neue Händler in der EeMEAR-Region gewonnen'},
     'j2.w2':{tr:'Hedefleri aşan 70+ satış & pazarlama kampanyası yürütüldü',en:'Executed 70+ sales & marketing campaigns exceeding targets',de:'70+ Vertriebs- & Marketingkampagnen über Plan umgesetzt'},
     'j3.role':{tr:'Bölge Satış Müdürü',en:'Territory Sales Manager',de:'Gebietsverkaufsleiter'},
-    'j3.desc':{tr:'Afrika, Orta Doğu, Güneybatı Asya, Türkiye, Yunanistan, Balkanlar ve Doğu Avrupa’da günlük operasyonların sahibi — pazar & rekabet analizi, bayi geliştirme ve danışmanlık temelli satış.',en:'Owned daily operations across Africa, the Middle East, South West Asia, Türkiye, Greece, the Balkans and Eastern Europe — market & competition analysis, dealer development and consultative sales.',de:'Verantwortung für das Tagesgeschäft in Afrika, dem Nahen Osten, Südwestasien, der Türkei, Griechenland, dem Balkan und Osteuropa — Markt- & Wettbewerbsanalyse, Händlerentwicklung und beratender Vertrieb.'},
+    'j3.desc':{tr:'Afrika, Orta Doğu, Güneybatı Asya, Türkiye, Yunanistan, Balkanlar ve Doğu Avrupa’da günlük operasyonların sorumluluğunu üstlendim; pazar ve rekabet analizi, bayi geliştirme ve danışmanlık temelli satışta rol aldım.',en:'I took ownership of daily operations across Africa, the Middle East, South West Asia, Türkiye, Greece, the Balkans and Eastern Europe, taking part in market & competition analysis, dealer development and consultative sales.',de:'Ich übernahm die Verantwortung für das Tagesgeschäft in Afrika, dem Nahen Osten, Südwestasien, der Türkei, Griechenland, dem Balkan und Osteuropa und wirkte bei Markt- & Wettbewerbsanalyse, Händlerentwicklung und beratendem Vertrieb mit.'},
     'j3.w1':{tr:'4 karmaşık proje tamamlandı; bölgesel satış & pazar payı arttı',en:'Completed 4 complex projects, boosting regional sales & share',de:'4 komplexe Projekte abgeschlossen, regionaler Umsatz & Anteil gesteigert'},
     'j3.w2':{tr:'Süreç optimizasyonuyla bölgesel büyüme %10+ arttı',en:'Increased regional growth by 10%+ through process optimisation',de:'Regionales Wachstum durch Prozessoptimierung um 10%+ gesteigert'},
     'j4.role':{tr:'Prografik Kanallar & VI Müdürü',en:'Prographics Channels & VI Manager',de:'Prographics-Kanäle & VI-Manager'},
-    'j4.desc':{tr:'Kısa, orta ve uzun vadeli kanal stratejisi kurdu; bayi & distribütör uyumunu yönetti, entegre pazarlama kampanyaları, sponsorluklar ve fuarlar tasarladı; ürün lansmanları, fiyatlandırma ve yol haritalarını denetledi.',en:'Built short, mid and long-term channel strategy, managed dealer & distributor alignment, designed integrated marketing campaigns, sponsorships and exhibitions, and oversaw product launches, pricing and roadmaps.',de:'Aufbau kurz-, mittel- und langfristiger Kanalstrategien, Steuerung der Händler- & Distributorenabstimmung, Gestaltung integrierter Marketingkampagnen, Sponsorings und Messen sowie Verantwortung für Produkteinführungen, Preisgestaltung und Roadmaps.'},
+    'j4.desc':{tr:'Kısa, orta ve uzun vadeli kanal stratejisini kurma; bayi ve distıribütör uyumunu yönetme, entegre pazarlama kampanyaları, sponsorluklar ve fuarlar tasarlama; ürün lansmanları, fiyatlandırma ve yol haritalarını yönetme fırsatı buldum.',en:'I had the chance to build short, mid and long-term channel strategy, manage dealer & distributor alignment, design integrated marketing campaigns, sponsorships and exhibitions, and run product launches, pricing and roadmaps.',de:'Ich durfte kurz-, mittel- und langfristige Kanalstrategien aufbauen, die Händler- & Distributorenabstimmung steuern, integrierte Marketingkampagnen, Sponsorings und Messen gestalten sowie Produkteinführungen, Preisgestaltung und Roadmaps verantworten.'},
     'j4.w1':{tr:'Türkiye & EEMEAR bölgesinde pazar payını büyüttü',en:'Grew market share in Türkiye & the EEMEAR region',de:'Marktanteil in der Türkei & EEMEAR-Region ausgebaut'},
     'j4.w2':{tr:'Geliri & marka görünürlüğünü artıran entegre kampanyalar yürüttü',en:'Executed integrated campaigns lifting revenue & brand visibility',de:'Integrierte Kampagnen für mehr Umsatz & Markenpräsenz umgesetzt'},
     'j5.role':{tr:'Perakende Kanal Müdürü',en:'Retail Channel Manager',de:'Retail-Channel-Manager'},
-    'j5.desc':{tr:'Perakende hesaplarını ve stok kontrolünü yönetti, yeni hesaplar açtı ve mevcut ilişkileri derinleştirdi, müşteri temsilcilerini eğitti, ürün lansmanları ve satış etkinlikleri düzenledi.',en:'Managed retail accounts and stock control, opened new accounts and deepened existing relationships, trained customer representatives and ran product announcements and sales events.',de:'Verwaltung von Einzelhandelskonten und Bestandskontrolle, Eröffnung neuer Konten und Vertiefung bestehender Beziehungen, Schulung von Kundenbetreuern sowie Produktankündigungen und Verkaufsevents.'},
+    'j5.desc':{tr:'Perakende hesaplarını ve stok kontrolünü yönetme, yeni hesaplar açma ve mevcut ilişkileri derinleştirme, müşteri temsilcilerini eğitme ve ürün lansmanları ile satış etkinlikleri düzenleme fırsatım oldu.',en:'I had the opportunity to manage retail accounts and stock control, open new accounts and deepen existing relationships, train customer representatives and run product launches and sales events.',de:'Ich hatte die Gelegenheit, Einzelhandelskonten und Bestandskontrolle zu verwalten, neue Konten zu eröffnen und bestehende Beziehungen zu vertiefen, Kundenbetreuer zu schulen sowie Produkteinführungen und Verkaufsevents durchzuführen.'},
     'j5.w1':{tr:'Satış hedeflerini aştı ve perakende kanal etkinliğini artırdı',en:'Exceeded sales targets and lifted retail channel effectiveness',de:'Verkaufsziele übertroffen und Effektivität des Retail-Kanals gesteigert'},
     'j6.role':{tr:'Adobe Ürün Müdürü',en:'Adobe Product Manager',de:'Adobe Produktmanager'},
-    'j6.desc':{tr:'Ürün lansmanları, basın bültenleri ve eğitim seminerleri hazırladı, satış ekiplerini ve envanteri yönetti, son kullanıcılarla doğrudan ilişki kurarak yüksek ürün memnuniyeti sağladı.',en:'Crafted product launches, press releases and training seminars, supervised sales teams and inventory, and engaged end-users directly to sustain high product satisfaction.',de:'Gestaltung von Produkteinführungen, Pressemitteilungen und Schulungsseminaren, Leitung von Vertriebsteams und Lagerbestand sowie direkter Kundenkontakt für hohe Produktzufriedenheit.'},
+    'j6.desc':{tr:'Ürün lansmanları, basın bültenleri ve eğitim seminerleri hazırlama, satış ekiplerini ve envanteri yönetme, son kullanıcılarla doğrudan ilişki kurarak yüksek ürün memnuniyeti sağlama fırsatı buldum.',en:'I had the chance to craft product launches, press releases and training seminars, manage sales teams and inventory, and engage end-users directly to sustain high product satisfaction.',de:'Ich durfte Produkteinführungen, Pressemitteilungen und Schulungsseminare gestalten, Vertriebsteams und Lagerbestand führen und Endkunden direkt einbinden, um hohe Produktzufriedenheit zu sichern.'},
     'j6.w1':{tr:'Adobe Creative Suite 3 lansmanını yönetti (600 katılımcı)',en:'Led the Adobe Creative Suite 3 launch (600 participants)',de:'Adobe Creative Suite 3-Launch geleitet (600 Teilnehmer)'},
     'j6.w2':{tr:'Adobe Acrobat 8 lansmanını yönetti (400 katılımcı)',en:'Managed Adobe Acrobat 8 launch (400 participants)',de:'Adobe Acrobat 8-Launch verantwortet (400 Teilnehmer)'},
     'j7.role':{tr:'Satış Müdürü',en:'Sales Manager',de:'Vertriebsleiter'},
-    'j7.desc':{tr:'Siparişleri, satış kontrolünü ve stok optimizasyonunu yönetti, sektörel trend ve talebi analiz etti, yeni satış kanalları geliştirdi ve proaktif müşteri ilişkileri yürüttü.',en:'Managed orders, sales control and stock optimisation, analysed sectoral trends and demand, developed new sales channels and ran proactive customer relationship management.',de:'Verwaltung von Aufträgen, Verkaufssteuerung und Bestandsoptimierung, Analyse von Branchentrends und Nachfrage, Entwicklung neuer Vertriebskanäle und proaktives Kundenbeziehungsmanagement.'},
+    'j7.desc':{tr:'Siparişleri, satış kontrolünü ve stok optimizasyonunu yönetme, sektörel trend ve talebi analiz etme, yeni satış kanalları geliştirme ve proaktif müşteri ilişkileri yürütme fırsatım oldu.',en:'I had the opportunity to manage orders, sales control and stock optimisation, analyse sectoral trends and demand, develop new sales channels and run proactive customer relationship management.',de:'Ich hatte die Gelegenheit, Aufträge, Verkaufssteuerung und Bestandsoptimierung zu managen, Branchentrends und Nachfrage zu analysieren, neue Vertriebskanäle zu entwickeln und proaktives Kundenbeziehungsmanagement zu betreiben.'},
     'j7.w1':{tr:'Sürdürülebilir satış & memnuniyet kurdu; kanalları güçlendirdi',en:'Built sustainable sales & satisfaction; strengthened channels',de:'Nachhaltigen Vertrieb & Zufriedenheit aufgebaut; Kanäle gestärkt'},
     'now':{tr:'Günümüz',en:'Present',de:'Heute'},
     /* skills */
@@ -891,7 +916,7 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
     /* contact */
     'co.idx':{tr:'06 — Konuşalım',en:'06 — Let’s talk',de:'06 — Sprechen wir'},
     'co.h2':{tr:'<em>Yeni bölümü</em><br>birlikte yazalım.',en:'Let’s build the<br><em>next chapter.</em>',de:'Lassen Sie uns das<br><em>nächste Kapitel</em> bauen.'},
-    'co.sub':{tr:'MENA, EMEA, Doğu Avrupa ve Orta Asya genelinde kıdemli iş geliştirme & satış liderliği rollerine açığım — relokasyona da açığım.',en:'Open to senior business development & sales leadership roles across MENA, EMEA, EE & Central Asia — and open to relocation.',de:'Offen für Senior-Rollen in Business Development & Vertrieb in MENA, EMEA, Osteuropa & Zentralasien — und offen für einen Umzug.'},
+    'co.sub':{tr:'MENA, EMEA, Doğu Avrupa ve Orta Asya’da büyümeyi yönetecek kıdemli liderlik fırsatlarına açık — yeni pazarlar ve relokasyon için hazır.',en:'Open to senior business development & sales leadership roles across MENA, EMEA, EE & Central Asia — and open to relocation.',de:'Offen für Senior-Rollen in Business Development & Vertrieb in MENA, EMEA, Osteuropa & Zentralasien — und offen für einen Umzug.'},
     'co.email':{tr:'E-posta',en:'Email',de:'E-Mail'},
     'co.li':{tr:'LinkedIn',en:'LinkedIn',de:'LinkedIn'},
     'ft.left':{tr:'Çağdaş Sevgen — İş Geliştirme & Satış',en:'Çağdaş Sevgen — Business Development & Sales',de:'Çağdaş Sevgen — Business Development & Vertrieb'}
@@ -916,6 +941,111 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   }
   window.I18N = { dict:D, apply, init };
   if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+<script>
+/* ============================================================
+   Motion design layer
+   - word-by-word masked heading reveals (re-runs on langchange)
+   - staggered group entrances (chips, regions, certs)
+   - draw-in accent lines
+   Reduced-motion safe; degrades to instant reveal.
+   ============================================================ */
+(function () {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const inView = (el, f = 0) => { const r = el.getBoundingClientRect(); return r.top < innerHeight * (1 - f) && r.bottom > innerHeight * f; };
+  const inViewLoose = (el) => { const r = el.getBoundingClientRect(); return r.top < innerHeight * 0.96 && r.bottom > innerHeight * 0.04; };
+
+  /* ---------- word-mask splitter (preserves <em>, <br>) ---------- */
+  const HEAD_SEL = '.shead h2, .quote blockquote, #contact h2';
+
+  function split(el) {
+    const words = [];
+    function walk(node, into) {
+      node.childNodes.forEach(ch => {
+        if (ch.nodeType === 3) {
+          const parts = ch.textContent.split(/(\s+)/);
+          parts.forEach(p => {
+            if (p === '') return;
+            if (/^\s+$/.test(p)) { into.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'ml-w';
+            const i = document.createElement('span'); i.className = 'ml-i'; i.textContent = p;
+            w.appendChild(i); into.appendChild(w); words.push(i);
+          });
+        } else if (ch.nodeType === 1) {
+          if (ch.tagName === 'BR') { into.appendChild(document.createElement('br')); return; }
+          const clone = ch.cloneNode(false);
+          into.appendChild(clone); walk(ch, clone);
+        }
+      });
+    }
+    const frag = document.createElement('span'); frag.style.display = 'contents';
+    walk(el, frag);
+    el.innerHTML = ''; el.appendChild(frag);
+    words.forEach((w, i) => { w.style.transitionDelay = (i * 0.052) + 's'; });
+    el.classList.add('ml');
+  }
+
+  function buildHeadings(animateIfVisible) {
+    $$(HEAD_SEL).forEach(el => {
+      el.classList.remove('in');
+      split(el);
+      if (reduced) { el.classList.add('in'); return; }
+      if (animateIfVisible && inViewLoose(el)) {
+        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+      }
+    });
+  }
+
+  const headObserver = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+  /* ---------- staggered groups ---------- */
+  function setupGroups() {
+    $$('.region, .chips, .certs').forEach(group => {
+      const kids = [...group.children];
+      kids.forEach((k, i) => { k.classList.add('stg'); k.style.transitionDelay = (i * 0.05) + 's'; });
+      groupObserver.observe(group);
+    });
+  }
+  const groupObserver = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const kids = [...e.target.children];
+      kids.forEach(k => k.classList.add('stg-in'));
+      const total = kids.length * 50 + 700;
+      setTimeout(() => kids.forEach(k => { k.style.transitionDelay = ''; }), total);
+      groupObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+
+  /* ---------- draw-in accent lines ---------- */
+  const lineObserver = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('lit'); lineObserver.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  function setupLines() { $$('.hero-eyebrow, .eyebrow').forEach(el => lineObserver.observe(el)); }
+
+  /* ---------- init ---------- */
+  function init() {
+    buildHeadings(false);
+    $$(HEAD_SEL).forEach(el => headObserver.observe(el));
+    setupGroups();
+    setupLines();
+  }
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+
+  /* re-split headings after a language switch (i18n rewrites innerHTML) */
+  addEventListener('langchange', () => {
+    // disconnect + rebuild so observers re-fire on the fresh nodes
+    requestAnimationFrame(() => {
+      buildHeadings(true);
+      $$(HEAD_SEL).forEach(el => { if (!el.classList.contains('in')) headObserver.observe(el); });
+    });
+  });
 })();
 
 </script>
@@ -976,37 +1106,35 @@ footer .f{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-tra
   /* ---------- KINETIC TEXT: slide in from a side, slide out the other ---------- */
   const kxEls = $$('.kx');
   kxEls.forEach((el,i)=>{ if(!el.dataset.k) el.dataset.k = (i%2? 'r':'l'); });
-  // Precompute direction and amount once — they never change at runtime
-  const kxDirs = kxEls.map(el => el.dataset.k === 'r' ? 1 : -1);
-  const kxAmts = kxEls.map(el => parseFloat(el.dataset.amt || '90'));
   function kinetic(){
     if(reduced) return;
     const vh = innerHeight;
-    // Batch all reads FIRST to avoid interleaved read/write layout thrashing
-    const rects = kxEls.map(el => el.getBoundingClientRect());
-    // Then batch all style writes
-    for(let i = 0; i < kxEls.length; i++){
-      const r = rects[i];
+    for(const el of kxEls){
+      const r = el.getBoundingClientRect();
       const center = r.top + r.height/2;
       // c: +1 at bottom edge, 0 at viewport centre, -1 at top edge
       let c = (center - vh/2) / (vh/2);
       c = Math.max(-1.3, Math.min(1.3, c));
+      const dir = el.dataset.k === 'r' ? 1 : -1;
+      const amt = parseFloat(el.dataset.amt || '90');
       // enters from +dir at bottom, rests at centre, exits to -dir at top
-      const x = kxDirs[i] * c * kxAmts[i];
+      const x = dir * c * amt;
       // stay fully visible across the central band; fade only near the edges
       const fade = Math.max(0, Math.abs(c) - 0.42) / 0.78;
       const ko = Math.max(0, 1 - fade * fade);
-      kxEls[i].style.setProperty('--kx', Math.round(x)+'px');
-      kxEls[i].style.setProperty('--ko', ko.toFixed(2));
+      el.style.setProperty('--kx', x.toFixed(1)+'px');
+      el.style.setProperty('--ko', ko.toFixed(3));
     }
   }
 
-  /* ---------- count up ---------- */
+  /* ---------- count up (gentle overshoot) ---------- */
   function countUp(el){
-    const target = parseFloat(el.dataset.count), dur=1600, start=performance.now();
+    const target = parseFloat(el.dataset.count), dur=1700, start=performance.now();
+    const back=1.18;
     (function step(now){
-      const t=Math.min((now-start)/dur,1), e=1-Math.pow(1-t,3);
-      el.textContent = Math.round(target*e);
+      const t=Math.min((now-start)/dur,1);
+      const e=1 + (back+1)*Math.pow(t-1,3) + back*Math.pow(t-1,2); // easeOutBack
+      el.textContent = Math.max(0, Math.round(target*e));
       if(t<1) requestAnimationFrame(step); else el.textContent=el.dataset.count;
     })(start);
   }
